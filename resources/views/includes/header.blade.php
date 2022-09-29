@@ -33,10 +33,8 @@
             <li class="has-megamenu"><a href="#"><span>Request A Tutor</span></a>
 
             </li>
-            <li><a href="account-orders.html"><span>Premium Tutor</span></a>
 
-            </li>
-            <li><a href="blog-rs.html"><span>Tutions</span></a>
+            <li><a href="/tutions"><span>Tutions</span></a>
 
             </li>
             <li><a href="blog-rs.html"><span>Contact Us</span></a>

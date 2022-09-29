@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TutorController;
+use App\Http\Controllers\TutionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,4 @@ use App\Http\Controllers\TutorController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/search-tutors', [TutorController::class, 'searchTutor']);
+Route::resource('tutions', TutionController::class);
