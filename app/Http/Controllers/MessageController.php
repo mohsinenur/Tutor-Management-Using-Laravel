@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tutor;
-use App\Http\Requests\StoreTutorRequest;
-use App\Http\Requests\UpdateTutorRequest;
+use App\Models\Message;
+use Illuminate\Http\Request;
 
-class TutorController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class TutorController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.tutor.message');
     }
 
     /**
@@ -31,10 +30,10 @@ class TutorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTutorRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTutorRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,21 +41,21 @@ class TutorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tutor  $tutor
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Tutor $tutor)
+    public function show(Message $message)
     {
-        return view('pages.tutor.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tutor  $tutor
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tutor $tutor)
+    public function edit(Message $message)
     {
         //
     }
@@ -64,11 +63,11 @@ class TutorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTutorRequest  $request
-     * @param  \App\Models\Tutor  $tutor
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTutorRequest $request, Tutor $tutor)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -76,26 +75,11 @@ class TutorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tutor  $tutor
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tutor $tutor)
+    public function destroy(Message $message)
     {
         //
-    }
-
-    public function searchTutor()
-    {
-        return view('pages.search_tutor');
-    }
-
-    public function requestTutor()
-    {
-        return view('pages.request_tutor');
-    }
-
-    public function myProfile()
-    {
-        return view('pages.tutor.profile');
     }
 }

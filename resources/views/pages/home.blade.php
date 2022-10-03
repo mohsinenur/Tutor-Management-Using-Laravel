@@ -117,8 +117,7 @@
                         <div class="col-xl-4 col-lg-4 ">
                             <div class="product-card product-list">
                                 <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
-                                    href="shop-single.html"><img src="{{ asset('assets/img/team/03.jpg') }}"
-                                        alt="Product"></a>
+                                    href="/tutor/1"><img src="{{ asset('assets/img/team/03.jpg') }}" alt="Product"></a>
                                 <div class="product-info">
                                     <h3 class="product-title"><a href="shop-single.html">ELIAS AHMED</a></h3>
                                     <h4 class="product-price">8000 tk/month</h4>

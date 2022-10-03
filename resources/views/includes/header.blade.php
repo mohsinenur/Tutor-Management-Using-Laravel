@@ -1,6 +1,7 @@
 <div class="topbar">
     <div class="topbar-column"><a class="hidden-md-down" href="mailto:support@unishop.com"><i class="icon-mail"></i>&nbsp;
-            support@unishop.com</a><a class="hidden-md-down" href="tel:00331697720"><i class="icon-bell"></i>&nbsp; 00 33
+            support@tutorfinder.com</a><a class="hidden-md-down" href="tel:00331697720"><i class="icon-bell"></i>&nbsp; 00
+            33
             169 7720</a><a class="social-button sb-facebook shape-none sb-dark" href="#" target="_blank"><i
                 class="socicon-facebook"></i></a><a class="social-button sb-twitter shape-none sb-dark" href="#"
             target="_blank"><i class="socicon-twitter"></i></a><a class="social-button sb-instagram shape-none sb-dark"
@@ -14,10 +15,10 @@
     </div>
 </div>
 
-<header class="navbar">
+<header class="navbar mb-4">
     <div class="site-branding">
         <div class="inner">
-            <a class="site-logo" href="index.html"><img src="{{ asset('assets/img/logo/logo.png') }}"
+            <a class="site-logo" href="/"><img src="{{ asset('assets/img/logo/logo.png') }}"
                     alt="Tutor Finder"></a>
         </div>
     </div>
@@ -30,14 +31,14 @@
             <li><a href="/search-tutors"><span>Search Tutor</span></a>
 
             </li>
-            <li class="has-megamenu"><a href="#"><span>Request A Tutor</span></a>
+            <li><a href="/request-tutor"><span>Request A Tutor</span></a>
 
             </li>
 
             <li><a href="/tutions"><span>Tutions</span></a>
 
             </li>
-            <li><a href="blog-rs.html"><span>Contact Us</span></a>
+            <li><a href="/contact"><span>Contact Us</span></a>
 
             </li>
         </ul>
@@ -48,7 +49,7 @@
             <div class="tools">
                 <div class="account"><a href="account-orders.html"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
-                        <li><a href="account-profile.html">My Profile</a></li>
+                        <li><a href="/my-profile">My Profile</a></li>
                         <li class="sub-menu-separator"></li>
                         <li><a href="#"> <i class="icon-unlock"></i>Logout</a></li>
                     </ul>
