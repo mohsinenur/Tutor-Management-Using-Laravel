@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tutor;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreTutorRequest;
 use App\Http\Requests\UpdateTutorRequest;
+use Illuminate\Support\Facades\DB;
 
 class TutorController extends Controller
 {
@@ -88,6 +90,34 @@ class TutorController extends Controller
     {
         return view('pages.search_tutor');
     }
+
+    public function searchTutorResult(Request $request)
+    {
+        $district = $request->input('district');
+        $area = $request->input('area');
+        $medium = $request->input('medium');
+        $class = $request->input('class');
+        $subject = $request->input('subject');
+
+        $query = DB::table('tutors');
+
+        if ($district)
+            $query = $query->where('district', $district);
+
+        if ($area)
+            $query = $query->where('area', $area);
+
+        if ($medium)
+            $query = $query->where('medium', $medium);
+
+        if ($class)
+            $query = $query->where('class', $class);
+
+        $tutors = $query->get();
+
+        return view('pages.search_tutor_result', ['tutors' => $tutors]);
+    }
+
 
     public function requestTutor()
     {

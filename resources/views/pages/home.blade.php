@@ -46,56 +46,46 @@
                     <!-- Widget Categories-->
                     <section class="widget widget-categories">
                         <h3 class="widget-title">SEARCH FOR TUTORS</h3>
-                        <form class="needs-validation" novalidate="">
+                        <form name="search-tutor-form" method="get" action="{{ url('search-tutors-result') }}">
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="district" class="form-control">
                                         <option value="">All Districts</option>
-                                        <option value="Dallas">Dallas</option>
+                                        <option value="dhaka">Dhaka</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="area" class="form-control">
                                         <option value="">All Areas</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="medium" class="form-control">
                                         <option value="">Any Medium</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="class" class="form-control">
                                         <option value="">Any Class</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="subject" class="form-control">
                                         <option value="">All Subjects</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <button class="btn btn-primary" type="submit">Search Tutor</button>
@@ -140,9 +130,9 @@
                                     <h4 class="product-price">4000 tk/month</h4>
                                     <p class="hidden-xs-down">DHAKA</p>
                                     <p class="hidden-xs-down">01677652242</p>
-                                    <button class="btn btn-outline-primary btn-sm" data-toast=""
-                                        data-toast-type="success" data-toast-position="topRight"
-                                        data-toast-icon="icon-circle-check" data-toast-title="Product"
+                                    <button class="btn btn-outline-primary btn-sm" data-toast="" data-toast-type="success"
+                                        data-toast-position="topRight" data-toast-icon="icon-circle-check"
+                                        data-toast-title="Product"
                                         data-toast-message="successfuly added to cart!">Chat</button>
                                 </div>
                             </div>

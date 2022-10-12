@@ -24,6 +24,7 @@ Route::get('/contact', function () {
 });
 Route::resource('tutor', TutorController::class);
 Route::get('/search-tutors', [TutorController::class, 'searchTutor']);
+Route::get('/search-tutors-result', [TutorController::class, 'searchTutorResult']);
 Route::get('/request-tutor', [TutorController::class, 'requestTutor']);
 Route::get('/my-profile', [TutorController::class, 'myProfile']);
 Route::get('/message', [MessageController::class, 'index']);

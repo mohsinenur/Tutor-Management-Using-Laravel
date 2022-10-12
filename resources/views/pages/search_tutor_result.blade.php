@@ -29,7 +29,7 @@
                 <aside class="sidebar sidebar-offcanvas">
                     <!-- Widget Categories-->
                     <section class="widget widget-categories">
-                        <h3 class="widget-title">SEARCH TUTORS</h3>
+                        <h3 class="widget-title">TUTOR SEARCH RESULT</h3>
                         <form class="needs-validation" novalidate="">
                             <div class="row">
                                 <div class="col-sm-6 form-group">
@@ -109,8 +109,31 @@
                         </form>
                     </section>
 
-
-
+                    <section class="widget widget-categories">
+                        <h3 class="widget-title">SEARCH TUTORS</h3>
+                        <div class="row">
+                            @foreach ($tutors as $tutor)
+                                <div class="col-xl-12 col-lg-12 ">
+                                    <div class="product-card product-list">
+                                        <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
+                                            href="/tutor/1"><img src="{{ asset('assets/img/team/03.jpg') }}"
+                                                alt="Product"></a>
+                                        <div class="product-info">
+                                            <h3 class="product-title"><a href="shop-single.html">{{ $tutor->full_name }}</a>
+                                            </h3>
+                                            <h4 class="product-price">8000 tk/month</h4>
+                                            <p class="hidden-xs-down">{{ $tutor->district }}</p>
+                                            <p class="hidden-xs-down">{{ $tutor->phone }}</p>
+                                            <button class="btn btn-outline-primary btn-sm" data-toast=""
+                                                data-toast-type="success" data-toast-position="topRight"
+                                                data-toast-icon="icon-circle-check" data-toast-title="Product"
+                                                data-toast-message="successfuly added to cart!">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </section>
                 </aside>
             </div>
         </div>
