@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2022 at 03:10 AM
+-- Generation Time: Oct 13, 2022 at 03:10 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -98,13 +98,66 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `tutions` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `location` varchar(225) NOT NULL,
-  `salary` varchar(255) NOT NULL,
-  `tutor_gender` varchar(25) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `full_name` varchar(255) DEFAULT NULL,
+  `district` varchar(255) DEFAULT NULL,
+  `area` varchar(255) DEFAULT NULL,
+  `medium` varchar(255) DEFAULT NULL,
+  `class` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `student_school` varchar(255) DEFAULT NULL,
+  `days_per_week` tinyint(4) DEFAULT NULL,
+  `student_gender` varchar(20) DEFAULT NULL,
+  `address` varchar(20) DEFAULT NULL,
+  `location` varchar(225) DEFAULT NULL,
+  `salary` varchar(255) DEFAULT NULL,
+  `mobile` varchar(50) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `information` text DEFAULT NULL,
+  `tutor_gender` varchar(25) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tutions`
+--
+
+INSERT INTO `tutions` (`id`, `user_id`, `full_name`, `district`, `area`, `medium`, `class`, `subject`, `student_school`, `days_per_week`, `student_gender`, `address`, `location`, `salary`, `mobile`, `email`, `information`, `tutor_gender`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Akram Khan', 'dhaka', 'gulshan', 'english', 'ten', 'math', 'Motijheel Govt School', NULL, 'Male', '12/1, Gulshan', NULL, NULL, '017864521', 'akram@gmail.com', 'You have to be very good at math. DU, Buet students are preferable.', 'Male', '2022-10-12 18:51:15', '2022-10-12 18:51:15'),
+(2, NULL, 'Akram Khan', 'dhaka', 'gulshan', 'english', 'ten', 'math', 'Motijheel Govt School', NULL, 'Male', '12/1, Gulshan', NULL, NULL, '017864521', 'akram@gmail.com', 'You have to be very good at math. DU, Buet students are preferable.', 'Male', '2022-10-12 18:52:56', '2022-10-12 18:52:56'),
+(3, NULL, 'Akram Khan', 'dhaka', 'gulshan', 'english', 'ten', 'math', 'Motijheel Govt School', NULL, 'Male', '12/1, Gulshan', NULL, NULL, '017864521', 'akram@gmail.com', 'You have to be very good at math. DU, Buet students are preferable.', 'Male', '2022-10-12 18:55:24', '2022-10-12 18:55:24'),
+(4, NULL, 'Saif Ali', 'dhaka', 'Select Area', 'Select Medium', 'Select Class', 'Select Subject', NULL, NULL, 'Any Gender', NULL, NULL, NULL, '0178788778', NULL, NULL, 'Any Gender', '2022-10-12 19:06:14', '2022-10-12 19:06:14'),
+(5, NULL, 'Shakil Hossain', 'Select District', 'Select Area', 'Select Medium', 'Select Class', 'Select Subject', NULL, NULL, 'Any Gender', NULL, NULL, NULL, '017864521', NULL, NULL, 'Any Gender', '2022-10-12 19:07:40', '2022-10-12 19:07:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutors`
+--
+
+CREATE TABLE `tutors` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `phone` varchar(25) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `gender` varchar(15) DEFAULT NULL,
+  `district` varchar(255) DEFAULT NULL,
+  `area` varchar(255) DEFAULT NULL,
+  `medium` varchar(255) DEFAULT NULL,
+  `subject` text DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tutors`
+--
+
+INSERT INTO `tutors` (`id`, `full_name`, `phone`, `email`, `gender`, `district`, `area`, `medium`, `subject`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'MD. Fahim Islam', '01765787682', 'fahim@gmail.com', NULL, 'dhaka', NULL, NULL, NULL, '123456', '2022-10-02 16:14:08', '2022-10-02 16:14:08'),
+(2, 'Hasibur Rahman', '01677543118', 'hasib@gmail.com', 'male', 'dhaka', 'adabar', 'bangla', 'math', '123456', '2022-10-12 00:34:49', '2022-10-12 00:34:49');
 
 -- --------------------------------------------------------
 
@@ -190,6 +243,12 @@ ALTER TABLE `tutions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tutors`
+--
+ALTER TABLE `tutors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -228,7 +287,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tutions`
 --
 ALTER TABLE `tutions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tutors`
+--
+ALTER TABLE `tutors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
