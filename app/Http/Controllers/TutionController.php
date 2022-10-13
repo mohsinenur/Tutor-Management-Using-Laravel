@@ -36,7 +36,14 @@ class TutionController extends Controller
      */
     public function store(StoreTutionRequest $request)
     {
-        //
+        $request->validate([
+            'full_name' => 'required',
+            'mobile' => 'required',
+        ]);
+
+        Tution::create($request->all());
+        return redirect()->back()
+            ->with('success', 'Turor request successfully.');
     }
 
     /**

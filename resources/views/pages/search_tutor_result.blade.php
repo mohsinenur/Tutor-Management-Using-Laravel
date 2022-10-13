@@ -30,77 +30,63 @@
                     <!-- Widget Categories-->
                     <section class="widget widget-categories">
                         <h3 class="widget-title">TUTOR SEARCH RESULT</h3>
-                        <form class="needs-validation" novalidate="">
+                        <form name="search-tutor-form" method="get" action="{{ url('search-tutors-result') }}">
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="district" class="form-control">
                                         <option value="">All Districts</option>
-                                        <option value="Dallas">Dallas</option>
+                                        <option value="dhaka">Dhaka</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="area" class="form-control">
                                         <option value="">All Areas</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="medium" class="form-control">
                                         <option value="">Any Medium</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="class" class="form-control">
                                         <option value="">Any Class</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="subject" class="form-control">
                                         <option value="">All Subjects</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="gender" class="form-control">
                                         <option value="">Any Gender</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <select class="form-control" id="validationCustom03" required="">
+                                    <select name="salary_range" class="form-control">
                                         <option value="">Salary Range</option>
                                         <option value="Dallas">Dallas</option>
                                         <option value="Houston">Houston</option>
                                     </select>
-                                    <div class="invalid-feedback">Please provide a valid city.</div>
-                                    <div class="valid-feedback">Looks good!</div>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <button class="btn btn-primary" type="submit">Search Tutor</button>

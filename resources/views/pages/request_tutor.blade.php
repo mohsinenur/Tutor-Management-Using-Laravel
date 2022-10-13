@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
     <div class="container padding-bottom-3x mb-1 mt-4">
         <div class="row">
             <!-- Blog Posts-->
@@ -31,68 +37,78 @@
                     <section class="widget widget-categories">
                         <h3 class="widget-title">SEARCH TUTORS</h3>
                         <p>আপনার গৃহশিক্ষক দরকার হলে নিচের ফরমটা পুরন করুন । গৃহশিক্ষকেরা আপনার ফোনে যোগাযোগ করবে। </p>
-                        <form class="needs-validation" novalidate="">
+                        <form name="request-tutor-form" method="post" action="{{ url('tutions') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 order-md-2">
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Full Name</label>
                                         <div class="col-9">
-                                            <input class="form-control" type="text" id="text-input"
-                                                value="Artisanal kale">
+                                            <input name="full_name" class="form-control" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select District: </label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="district" class="form-control" id="select-input">
                                                 <option>Select District</option>
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
+                                                <option value="dhaka">Dhaka</option>
+                                                <option value="manikganj">Manikganj</option>
+                                                <option value="sylhet">Sylhet</option>
+                                                <option value="khulna">Khulna</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select Area:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="area" class="form-control" id="select-input">
                                                 <option>Select Area</option>
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
+                                                <option value="gulshan">Gulshan</option>
+                                                <option value="banani">Banani</option>
+                                                <option value="badda">Badda</option>
+                                                <option value="mirpur">Mirpur</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select Medium:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="medium" class="form-control" id="select-input">
                                                 <option>Select Medium</option>
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
+                                                <option value="english">English</option>
+                                                <option value="bangla">Bangla</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select Class:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="class" class="form-control" id="select-input">
                                                 <option>Select Class</option>
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
+                                                <option value="one">One</option>
+                                                <option value="two">Two</option>
+                                                <option value="three">Three</option>
+                                                <option value="four">Four</option>
+                                                <option value="five">Five</option>
+                                                <option value="six">Six</option>
+                                                <option value="seven">Seven</option>
+                                                <option value="eight">Eight</option>
+                                                <option value="nine">Nine</option>
+                                                <option value="ten">Ten</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input"> Select Subject:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="subject" class="form-control" id="select-input">
                                                 <option> Select Subject</option>
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
+                                                <option value="bangla">Bangla</option>
+                                                <option value="english">English</option>
+                                                <option value="math">Math</option>
+                                                <option value="chamestry">Chamestry</option>
+                                                <option value="ICT">ict</option>
                                             </select>
                                         </div>
                                     </div>
@@ -100,34 +116,26 @@
                                         <label class="col-3 col-form-label" for="textarea-input">Student School/
                                             College:</label>
                                         <div class="col-9">
-                                            <textarea class="form-control" id="textarea-input" rows="5">Hello World!</textarea>
+                                            <textarea name="student_school" class="form-control" id="textarea-input" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Days per week:</label>
                                         <div class="col-9">
                                             <select class="form-control" id="select-input">
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-3 col-form-label" for="select-input"> Select Subject:</label>
-                                        <div class="col-9">
-                                            <select class="form-control" id="select-input">
-                                                <option> Select Subject</option>
-                                                <option>Option item 1</option>
-                                                <option>Option item 2</option>
-                                                <option>Option item 3</option>
+                                                <option value="one">One</option>
+                                                <option value="two">Two</option>
+                                                <option value="three">Three</option>
+                                                <option value="four">Four</option>
+                                                <option value="five">Five</option>
+                                                <option value="six">Six</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input"> Gender of Student:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="student_gender" class="form-control" id="select-input">
                                                 <option>Any Gender</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
@@ -135,34 +143,39 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-3 col-form-label" for="select-input">Desired Tutor Gender:</label>
+                                        <label class="col-3 col-form-label" for="select-input">Desired Tutor
+                                            Gender:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="tutor_gender" class="form-control" id="select-input">
                                                 <option>Any Gender</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-3 col-form-label" for="text-input">Monthly Salary</label>
+                                        <div class="col-9">
+                                            <input name="salary" class="form-control" type="text" id="text-input">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="textarea-input">Details Address</label>
                                         <div class="col-9">
-                                            <textarea class="form-control" id="textarea-input" rows="5"></textarea>
+                                            <textarea name="address" class="form-control" id="textarea-input" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Mobile</label>
                                         <div class="col-9">
-                                            <input class="form-control" type="text" id="text-input"
-                                                value="Artisanal kale">
+                                            <input name="mobile" class="form-control" type="text" id="text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Email</label>
                                         <div class="col-9">
-                                            <input class="form-control" type="text" id="text-input"
-                                                value="Artisanal kale">
+                                            <input name="email" class="form-control" type="text" id="text-input">
                                         </div>
                                     </div>
 
@@ -170,7 +183,7 @@
                                         <label class="col-3 col-form-label" for="textarea-input">Additional
                                             Information</label>
                                         <div class="col-9">
-                                            <textarea class="form-control" id="textarea-input" rows="5"></textarea>
+                                            <textarea name="information" class="form-control" id="textarea-input" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary" type="submit">Request Tutor</button>
