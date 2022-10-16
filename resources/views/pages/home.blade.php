@@ -104,15 +104,16 @@
                 <section class="widget widget-categories">
                     <h3 class="widget-title">Featured Tutors</h3>
                     <div class="row">
+                        @foreach($tutors as $tutor)
                         <div class="col-xl-4 col-lg-4 ">
                             <div class="product-card product-list">
                                 <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
-                                    href="/tutor/1"><img src="{{ asset('assets/img/team/03.jpg') }}" alt="Product"></a>
+                                    href="/tutor/{{ $tutor->id }}"><img src="{{ url('images/'.$tutor->image) }}" alt="Product"></a>
                                 <div class="product-info">
-                                    <h3 class="product-title"><a href="shop-single.html">ELIAS AHMED</a></h3>
-                                    <h4 class="product-price">8000 tk/month</h4>
-                                    <p class="hidden-xs-down">DHAKA</p>
-                                    <p class="hidden-xs-down">01677651442</p>
+                                    <h3 class="product-title"><a href="/tutor/{{ $tutor->id }}">{{ $tutor->name }}</a></h3>
+                                    <h4 class="product-price">{{ $tutor->salary }} tk/month</h4>
+                                    <p class="hidden-xs-down">{{ $tutor->district }}</p>
+                                    <p class="hidden-xs-down">{{ $tutor->phone }}</p>
                                     <button class="btn btn-outline-primary btn-sm" data-toast="" data-toast-type="success"
                                         data-toast-position="topRight" data-toast-icon="icon-circle-check"
                                         data-toast-title="Product"
@@ -120,40 +121,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 ">
-                            <div class="product-card product-list">
-                                <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
-                                    href="shop-single.html"><img src="{{ asset('assets/img/team/01.jpg') }}"
-                                        alt="Product"></a>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="shop-single.html">shakila jahan sayma</a></h3>
-                                    <h4 class="product-price">4000 tk/month</h4>
-                                    <p class="hidden-xs-down">DHAKA</p>
-                                    <p class="hidden-xs-down">01677652242</p>
-                                    <button class="btn btn-outline-primary btn-sm" data-toast="" data-toast-type="success"
-                                        data-toast-position="topRight" data-toast-icon="icon-circle-check"
-                                        data-toast-title="Product"
-                                        data-toast-message="successfuly added to cart!">Chat</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 ">
-                            <div class="product-card product-list">
-                                <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
-                                    href="shop-single.html"><img src="{{ asset('assets/img/team/05.jpg') }}"
-                                        alt="Product"></a>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="shop-single.html">Sazzadul Akbar Shuvo</a></h3>
-                                    <h4 class="product-price">6000 tk/month</h4>
-                                    <p class="hidden-xs-down">DHAKA</p>
-                                    <p class="hidden-xs-down">01674651442</p>
-                                    <button class="btn btn-outline-primary btn-sm" data-toast=""
-                                        data-toast-type="success" data-toast-position="topRight"
-                                        data-toast-icon="icon-circle-check" data-toast-title="Product"
-                                        data-toast-message="successfuly added to cart!">Chat</button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </section>
             </aside>

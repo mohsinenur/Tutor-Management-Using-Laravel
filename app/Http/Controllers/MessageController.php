@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class MessageController extends Controller
 {

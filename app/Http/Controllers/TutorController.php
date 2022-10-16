@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tutor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTutorRequest;
 use App\Http\Requests\UpdateTutorRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TutorController extends Controller
 {
@@ -17,7 +20,7 @@ class TutorController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -49,7 +52,13 @@ class TutorController extends Controller
      */
     public function show(Tutor $tutor)
     {
-        return view('pages.tutor.show');
+        // $tutor = DB::table('tutors')->where('id', $tutor->id)->get()->first();
+        // dd($tutors);
+        $user = DB::table('users')
+            ->select('users.*', 'tutors.*')
+            ->join('tutors', 'tutors.user_id', '=', 'users.id')
+            ->where('tutors.id', $tutor->id)->get()->first();
+        return view('pages.tutor.show', compact('user'));
     }
 
     /**
@@ -72,7 +81,7 @@ class TutorController extends Controller
      */
     public function update(UpdateTutorRequest $request, Tutor $tutor)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -124,8 +133,4 @@ class TutorController extends Controller
         return view('pages.request_tutor');
     }
 
-    public function myProfile()
-    {
-        return view('pages.tutor.profile');
-    }
 }

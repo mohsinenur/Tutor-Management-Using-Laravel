@@ -105,7 +105,7 @@
                                             href="/tutor/1"><img src="{{ asset('assets/img/team/03.jpg') }}"
                                                 alt="Product"></a>
                                         <div class="product-info">
-                                            <h3 class="product-title"><a href="shop-single.html">{{ $tutor->full_name }}</a>
+                                            <h3 class="product-title"><a href="shop-single.html">{{ $tutor->name }}</a>
                                             </h3>
                                             <h4 class="product-price">8000 tk/month</h4>
                                             <p class="hidden-xs-down">{{ $tutor->district }}</p>
