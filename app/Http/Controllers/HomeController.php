@@ -13,11 +13,13 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
+            // dd(Auth::user()->id);
             $tutors = DB::table('users')
             ->whereNot('users.id', Auth::user()->id)
             ->select('users.*', 'tutors.*')
             ->join('tutors', 'tutors.user_id', '=', 'users.id')
             ->get();
+            return view('pages.home', compact('tutors'));
         }
         $tutors = DB::table('users')
             ->select('users.*', 'tutors.*')

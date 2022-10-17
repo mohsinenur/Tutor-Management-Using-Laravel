@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminContact;
 use App\Models\Message;
+use App\Models\UserReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,7 @@ class MessageController extends Controller
         return view('pages.tutor.message', compact('messages', 'unread_count'));
     }
 
-    public function mark_read($id)
+    public function markRead($id)
     {
         DB::table('messages')->where('id', $id)->update(['status'=> 'read']);
         return redirect()->back();
@@ -57,7 +58,6 @@ class MessageController extends Controller
 
     public function adminMessage(Request $request)
     {
-        
         $data = request()->except(['_token']);
         if (Auth::check()) {
             $data['from_id'] = Auth::user()->id;
@@ -66,6 +66,18 @@ class MessageController extends Controller
         AdminContact::create($data);
         return redirect()->back();
     }
+
+    public function userReport(Request $request)
+    {
+        $data = request()->except(['_token']);
+        if (Auth::check()) {
+            $data['report_by'] = Auth::user()->id;
+        }
+        // dd($data);
+        UserReport::create($data);
+        return redirect()->back();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

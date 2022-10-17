@@ -74,15 +74,16 @@ CREATE TABLE `messages` (
   PRIMARY KEY (`id`),
   KEY `to_id` (`to_id`),
   CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`to_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `messages` */
 
 insert  into `messages`(`id`,`from_id`,`to_id`,`message`,`email`,`fullname`,`created_at`,`updated_at`,`status`,`phone`) values 
 (1,8,11,'Are you available?','khalid@gmail.com','Khalid Hassan','2022-10-17 08:45:30','2022-10-17 08:45:33','read',NULL),
 (2,8,11,'hello','khalid@gmail.com','Khalid Hassan','2022-10-17 08:46:12','2022-10-17 08:46:14','unread',NULL),
-(3,11,8,'Yes, I am available.','tutor@gmail.com','Tutor','2022-10-17 18:50:43','2022-10-17 18:50:46','read',NULL),
-(4,11,12,'details','mukulseu@gmail.com','name','2022-10-17 16:34:47','2022-10-17 16:34:47','read','01757069807');
+(3,11,8,'Yes, I am available.','tutor@gmail.com','Tutor','2022-10-17 08:50:43','2022-10-17 18:50:46','read',NULL),
+(4,11,12,'details','mukulseu@gmail.com','name','2022-10-17 16:34:47','2022-10-17 16:34:47','read','01757069807'),
+(6,11,8,'hello student','nafish@gmail.com','Name','2022-10-17 17:54:59','2022-10-17 17:54:59','unread','01686161175');
 
 /*Table structure for table `migrations` */
 
@@ -204,8 +205,27 @@ CREATE TABLE `tutors` (
 /*Data for the table `tutors` */
 
 insert  into `tutors`(`id`,`district`,`area`,`medium`,`class`,`subject`,`days_per_week`,`salary`,`address`,`information`,`user_id`,`qualification`,`teaching_style`,`created_at`,`updated_at`) values 
-(3,'dhaka','gulshan','English','seven','english',5,6000,'Nikunja-2, Dhaka',NULL,11,NULL,NULL,'2022-10-15 05:18:14','2022-10-15 10:49:15'),
+(3,'dhaka','gulshan','English','seven','english',5,6000,'Nikunja-2, Dhaka',NULL,11,'BSC. in CSE','Private','2022-10-15 05:18:14','2022-10-17 18:09:07'),
 (4,'manikganj','mirpur','English','eight','english',3,7000,'Nowapara, Jessore',NULL,12,NULL,NULL,'2022-10-15 14:26:36','2022-10-15 14:28:06');
+
+/*Table structure for table `user_reports` */
+
+DROP TABLE IF EXISTS `user_reports`;
+
+CREATE TABLE `user_reports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `report_by` int(11) DEFAULT NULL,
+  `reason` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `user_reports` */
+
+insert  into `user_reports`(`id`,`user_id`,`report_by`,`reason`,`created_at`,`updated_at`) values 
+(1,12,11,'reasons','2022-10-17 17:32:05','2022-10-17 17:32:05');
 
 /*Table structure for table `user_types` */
 

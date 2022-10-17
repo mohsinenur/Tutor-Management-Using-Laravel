@@ -197,15 +197,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-3 col-form-label" for="text-input">Monthly Salary</label>
-                                <div class="col-9">
-                                    <input name="salary" class="form-control" type="number" id="text-input" value="{{ $tutor->salary }}">
+
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="col-form-label" for="text-input">Preferable Tution Style:</label>
+                                    <div>
+                                        <input name="teaching_style" class="form-control" type="text" id="text-input" value="{{ $tutor->teaching_style }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-form-label" for="text-input">Monthly Salary:</label>
+                                    <div>
+                                        <input name="salary" class="form-control" type="number" id="text-input" value="{{ $tutor->salary }}">
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-3 col-form-label" for="textarea-input">Details Address</label>
+                                <label class="col-3 col-form-label" for="textarea-input">Qualifications:</label>
+                                <div class="col-9">
+                                    <input type="text" name="qualification" class="form-control" value="{{ $tutor->qualification }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label" for="textarea-input">Details Address:</label>
                                 <div class="col-9">
                                     <textarea name="address" class="form-control" id="textarea-input" rows="3">{{ $tutor->address }}</textarea>
                                 </div>
@@ -213,7 +229,7 @@
 
                             <div class="form-group row">
                                 <label class="col-3 col-form-label" for="textarea-input">Additional
-                                    Information</label>
+                                    Information:</label>
                                 <div class="col-9">
                                     <textarea name="information" class="form-control" id="textarea-input" rows="3">{{ $tutor->information }}</textarea>
                                 </div>
@@ -286,7 +302,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group row">
                                 <label class="col-3 col-form-label" for="select-input">
                                     Visibility:</label>
