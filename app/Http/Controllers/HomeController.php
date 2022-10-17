@@ -6,12 +6,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tutor;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
-
+        if (Auth::check()) {
+            $tutors = DB::table('users')
+            ->whereNot('users.id', Auth::user()->id)
+            ->select('users.*', 'tutors.*')
+            ->join('tutors', 'tutors.user_id', '=', 'users.id')
+            ->get();
+        }
         $tutors = DB::table('users')
             ->select('users.*', 'tutors.*')
             ->join('tutors', 'tutors.user_id', '=', 'users.id')

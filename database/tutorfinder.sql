@@ -16,6 +16,28 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`tutorfinder` /*!40100 DEFAULT CHARACTER
 
 USE `tutorfinder`;
 
+/*Table structure for table `admin_contacts` */
+
+DROP TABLE IF EXISTS `admin_contacts`;
+
+CREATE TABLE `admin_contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_id` int(11) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `fullname` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `phone` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `admin_contacts` */
+
+insert  into `admin_contacts`(`id`,`from_id`,`message`,`email`,`fullname`,`created_at`,`updated_at`,`phone`) values 
+(1,11,'details','email@gmail.com','name','2022-10-17 16:54:49','2022-10-17 16:54:49','01677531881'),
+(2,11,'details','velaf92226@imdutex.com','Client3','2022-10-17 16:56:27','2022-10-17 16:56:27','01686161175');
+
 /*Table structure for table `failed_jobs` */
 
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -47,12 +69,20 @@ CREATE TABLE `messages` (
   `fullname` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(255) DEFAULT 'unread',
+  `phone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `to_id` (`to_id`),
   CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`to_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `messages` */
+
+insert  into `messages`(`id`,`from_id`,`to_id`,`message`,`email`,`fullname`,`created_at`,`updated_at`,`status`,`phone`) values 
+(1,8,11,'Are you available?','khalid@gmail.com','Khalid Hassan','2022-10-17 08:45:30','2022-10-17 08:45:33','read',NULL),
+(2,8,11,'hello','khalid@gmail.com','Khalid Hassan','2022-10-17 08:46:12','2022-10-17 08:46:14','unread',NULL),
+(3,11,8,'Yes, I am available.','tutor@gmail.com','Tutor','2022-10-17 18:50:43','2022-10-17 18:50:46','read',NULL),
+(4,11,12,'details','mukulseu@gmail.com','name','2022-10-17 16:34:47','2022-10-17 16:34:47','read','01757069807');
 
 /*Table structure for table `migrations` */
 
@@ -140,11 +170,11 @@ CREATE TABLE `tutions` (
 /*Data for the table `tutions` */
 
 insert  into `tutions`(`id`,`user_id`,`full_name`,`district`,`area`,`medium`,`class`,`subject`,`student_school`,`days_per_week`,`student_gender`,`address`,`location`,`salary`,`mobile`,`email`,`information`,`tutor_gender`,`status`,`created_at`,`updated_at`) values 
-(1,NULL,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',NULL,'Male','12/1, Gulshan',NULL,NULL,'017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:51:15','2022-10-13 00:51:15'),
-(2,NULL,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',NULL,'Male','12/1, Gulshan',NULL,NULL,'017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:52:56','2022-10-13 00:52:56'),
-(3,NULL,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',NULL,'Male','12/1, Gulshan',NULL,NULL,'017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:55:24','2022-10-13 00:55:24'),
-(4,NULL,'Saif Ali','dhaka','Select Area','Select Medium','Select Class','Select Subject',NULL,NULL,'Any Gender',NULL,NULL,NULL,'0178788778',NULL,NULL,'Any Gender','Available','2022-10-13 01:06:14','2022-10-13 01:06:14'),
-(5,NULL,'Shakil Hossain','Select District','Select Area','Select Medium','Select Class','Select Subject',NULL,NULL,'Any Gender',NULL,NULL,NULL,'017864521',NULL,NULL,'Any Gender','Available','2022-10-13 01:07:40','2022-10-13 01:07:40');
+(1,8,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',3,'Male','12/1, Gulshan',NULL,'4000','017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:51:15','2022-10-13 00:51:15'),
+(2,8,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',4,'Male','12/1, Gulshan',NULL,'5000','017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:52:56','2022-10-13 00:52:56'),
+(3,NULL,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',5,'Male','12/1, Gulshan',NULL,'6000','017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:55:24','2022-10-13 00:55:24'),
+(4,8,'Saif Ali','dhaka','banani','bangla','nine','physics','Uttara HIgh School',2,'Any Gender',NULL,NULL,'4000','0178788778',NULL,NULL,'Any Gender','Available','2022-10-13 01:06:14','2022-10-13 01:06:14'),
+(5,NULL,'Shakil Hossain','dhaka','banani','bangla','eight','physics','Banani High School',5,'Any Gender',NULL,NULL,'5000','017864521',NULL,NULL,'Any Gender','Available','2022-10-13 01:07:40','2022-10-13 01:07:40');
 
 /*Table structure for table `tutors` */
 
@@ -210,7 +240,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_type` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'profile.png',
-  `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT 'Active',
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT 'Available',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -223,7 +253,7 @@ insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`phone`,
 (1,'Admin','admin@admin.com',NULL,'$2y$10$YHsvHUQLyMIuMimuej8XZeGOtnVpXV9/RiU81M9PdZQCk0VckRQAm',NULL,NULL,NULL,'admin','profile.png','Available','2022-09-28 14:50:25','2022-09-28 14:50:25'),
 (6,'Nur Mohsin','mohsin@gmail.com',NULL,'$2y$10$xR2CUgSj8/vxxqUrzlmwgOg4hFdAFzKVIYZySRm3H519bTz7nxz1y',NULL,NULL,NULL,'parent','profile.png','Available','2022-10-14 13:27:30','2022-10-14 13:27:30'),
 (8,'Khalid Hassan','khalid@gmail.com',NULL,'$2y$10$uEroShNjS00kZJyjPdctDOf0.AyiNTYo2.8T76A9NNjjdlAv2twia','01757069806','Male',NULL,'student','1665838361.png','Available','2022-10-14 13:36:16','2022-10-15 12:52:41'),
-(11,'Tutor','tutor@gmail.com',NULL,'$2y$10$AOuYQz74NNRndkFcRxOsaOgQyT7YXHeJsnWrqjW4rN9CZRTCGKE6e','01677531881','Male',NULL,'tutor','1665838130.png','Available','2022-10-15 05:18:13','2022-10-15 12:48:50'),
+(11,'Tutor','tutor@gmail.com',NULL,'$2y$10$AOuYQz74NNRndkFcRxOsaOgQyT7YXHeJsnWrqjW4rN9CZRTCGKE6e','01677531881','Male',NULL,'tutor','1665838130.png','Unavaliable','2022-10-15 05:18:13','2022-10-17 01:37:43'),
 (12,'Nafish Sadik','nafish@gmail.com',NULL,'$2y$10$9g8hIX5U6HaOZiMgA7pg2OHybvs4oYRiFDfAeGqSDiupWHvWLTTbO','01837527151','Male',NULL,'tutor','profile.png','Available','2022-10-15 14:26:36','2022-10-15 14:27:12');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

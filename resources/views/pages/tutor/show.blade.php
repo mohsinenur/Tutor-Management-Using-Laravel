@@ -63,25 +63,27 @@
         <div class="col-lg-4 col-md-4 order-md-2">
             <h6 class="text-muted text-normal text-uppercase">Message this Tutor</h6>
             <hr class="margin-bottom-1x">
-            <form class="needs-validation" novalidate="">
+            <form class="needs-validation" novalidate="" method="POST" action="{{ url('create-message') }}">
+                @csrf
+                <input type="hidden" name="to_id" value="{{ $user->user_id }}">
                 <div class="form-group">
                     <label for="validationCustom01">Full name</label>
-                    <input class="form-control" type="text" id="validationCustom01" required="">
+                    <input class="form-control" type="text" id="validationCustom01" required="" name="fullname">
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="form-group">
                     <label for="validationCustom02">Mobile</label>
-                    <input class="form-control" type="text" id="validationCustom02" required="">
+                    <input class="form-control" type="text" id="validationCustom02" required="" name="phone">
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="form-group">
                     <label for="validationCustom03">Email</label>
-                    <input class="form-control" type="text" id="validationCustom03" required="">
+                    <input class="form-control" type="text" id="validationCustom03" required="" name="email">
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="form-group">
                     <label for="textarea-input">Details</label>
-                    <textarea class="form-control" id="textarea-input" rows="2"></textarea>
+                    <textarea class="form-control" id="textarea-input" name="message" rows="2"></textarea>
                     <div class="valid-feedback">Looks good!</div>
                 </div>
                 <button class="btn btn-primary" type="submit">Send Message</button>

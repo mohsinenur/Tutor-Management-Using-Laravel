@@ -3,32 +3,33 @@
 @section('content')
 
     <div class="container padding-bottom-2x mb-2">
-        <div class="row">
-            <div class="col-md-7">
-                <div class="display-3 text-muted opacity-75 mb-30">Customer Service</div>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-icon">
-                    <li> <i class="icon-mail"></i><a class="navi-link"
-                            href="mailto:customer.service@tutorfinder.com">customer.service@tutorfinder.com</a></li>
-                    <li> <i class="icon-bell"></i>+1(080) 44 357 260</li>
-                    <li> <i class="icon-clock"></i>1 - 2 business days</li>
-                </ul>
-            </div>
-        </div>
-        <hr class="margin-top-2x">
-        <div class="row margin-top-2x">
-            <div class="col-md-7">
-                <div class="display-3 text-muted opacity-75 mb-30">Tech Support</div>
-            </div>
-            <div class="col-md-5">
-                <ul class="list-icon">
-                    <li> <i class="icon-mail"></i><a class="navi-link"
-                            href="mailto:support@tutorfinder.com">support@tutorfinder.com</a></li>
-                    <li> <i class="icon-bell"></i>00 33 169 7720</li>
-                    <li> <i class="icon-clock"></i>1 - 2 business days</li>
-                </ul>
-            </div>
+        <div class="col-md-7 order-md-2">
+            <h6 class="text-muted text-normal text-uppercase">Contact Admin</h6>
+            <hr class="margin-bottom-1x">
+            <form class="needs-validation" novalidate="" method="POST" action="{{ url('admin-message') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="validationCustom01">Full name</label>
+                    <input class="form-control" type="text" id="validationCustom01" required="" name="fullname">
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="form-group">
+                    <label for="validationCustom02">Mobile</label>
+                    <input class="form-control" type="text" id="validationCustom02" required="" name="phone">
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="form-group">
+                    <label for="validationCustom03">Email</label>
+                    <input class="form-control" type="text" id="validationCustom03" required="" name="email">
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="form-group">
+                    <label for="textarea-input">Details</label>
+                    <textarea class="form-control" id="textarea-input" name="message" rows="2"></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <button class="btn btn-primary" type="submit">Send Message</button>
+            </form>
         </div>
 
     </div>

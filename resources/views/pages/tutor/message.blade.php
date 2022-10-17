@@ -18,7 +18,7 @@
             </aside>
             <nav class="list-group">
                 <a class="list-group-item with-badge active" href="/message"><i class="icon-bag">
-                    </i>Message<span class="badge badge-primary badge-pill">{{ count($messages) }}</span></a>
+                    </i>Message<span class="badge badge-primary badge-pill">{{ $unread_count }}</span></a>
                 <a class="list-group-item " href="/my-profile"><i class="icon-head"></i>Profile</a>
             </nav>
         </div>
@@ -40,7 +40,31 @@
                             </td>
                             <td>{{ $message->email }}</td>
                             <td><span class="text-danger">{{ $message->created_at }}</span></td>
-                            <td><button class="btn btn-link-info" type="button">View</button></td>
+                            <td><button class="btn btn-link-info" type="button" data-toggle="modal" data-target="#modalmessage{{ $message->id }}">View</button>
+                                <form action="{{ url('message', [$message->id]) }}" method="post">
+                                    @csrf
+                                    <div class="modal fade show" id="modalmessage{{ $message->id }}" tabindex="-1" role="dialog" style="padding-right: 17px; display: none;" aria-modal="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">{{ $message->fullname }}</h4>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>{{ $message->message }}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
+                                                    @if($message->status == 'unread')
+                                                    <button class="btn btn-primary btn-sm" type="submit">Mark as read</button>
+                                                    @endif
+                                                    <a href="{{ url('delete-message', [$message->id]) }}" class="btn btn-danger btn-sm" type="submit">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -116,7 +116,9 @@ class AuthController extends Controller
     public function myProfile()
     {
         if (Auth::check()) {
-            $messages = DB::table('messages')->where('to_id', Auth::user()->id)->get();
+            $unread_count = (DB::table('messages')
+            ->where('to_id', Auth::user()->id)
+            ->where('status', 'unread'))->count();
 
             if (Auth::user()->user_type == 'tutor') {
                 $query = DB::table('tutors');
@@ -125,12 +127,12 @@ class AuthController extends Controller
                 $id = $tutor->id;
                 $user = Auth::user();
 
-                return view('pages.tutor.profile', compact('id', 'tutor', 'user', 'messages'));
+                return view('pages.tutor.profile', compact('id', 'tutor', 'user', 'unread_count'));
             }
             $id = Auth::user()->id;
             $user = Auth::user();
 
-            return view('pages.tutor.profile', compact('id', 'user', 'messages'));
+            return view('pages.tutor.profile', compact('id', 'user', 'unread_count'));
         }
         return redirect('login')->with('Error', 'Please log in first!');
     }

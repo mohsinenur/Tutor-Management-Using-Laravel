@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </aside>
-            <nav class="list-group"><a class="list-group-item with-badge" href="/message"><i class="icon-bag"></i>Message<span class="badge badge-primary badge-pill">{{count($messages)}}</span></a><a class="list-group-item active" href="/my-profile"><i class="icon-head"></i>Profile</a></nav>
+            <nav class="list-group"><a class="list-group-item with-badge" href="/message"><i class="icon-bag"></i>Message<span class="badge badge-primary badge-pill">{{ $unread_count }}</span></a><a class="list-group-item active" href="/my-profile"><i class="icon-head"></i>Profile</a></nav>
         </div>
         <div class="col-lg-8">
             <div class="product-info">

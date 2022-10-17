@@ -36,9 +36,9 @@
 
             </li>
             @if (Auth::guest())
-            <li><a href="login"><span>Login</span></a>
+            <li><a href="/login"><span>Login</span></a>
             </li>
-            <li><a href="register"><span>Register</span></a>
+            <li><a href="/register"><span>Register</span></a>
             </li>
             @endif
         </ul>
