@@ -40,3 +40,4 @@ Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 
 Route::post('update-user', [AuthController::class, 'updateUser'])->name('updateUser');
 Route::post('update-tutor', [AuthController::class, 'updateTutor'])->name('updatTutor');
+Route::get('user/{id}',[AuthController::class,'userProfile'])->name('userProfile');

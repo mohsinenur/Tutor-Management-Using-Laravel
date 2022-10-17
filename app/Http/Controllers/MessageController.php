@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -15,7 +16,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('pages.tutor.message');
+        $messages = DB::table('messages')->where('to_id', Auth::user()->id)->get()->sortByDesc('created_at');
+        // dd($messages);
+        return view('pages.tutor.message', compact('messages'));
     }
 
     /**
