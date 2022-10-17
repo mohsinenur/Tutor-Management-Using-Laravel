@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\TutorRequest;
+use App\Http\Requests\MessageRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class TutorCrudController
+ * Class MessageCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class TutorCrudController extends CrudController
+class MessageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class TutorCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Tutor::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/tutor');
-        CRUD::setEntityNameStrings('tutor', 'tutors');
+        CRUD::setModel(\App\Models\Message::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/message');
+        CRUD::setEntityNameStrings('message', 'messages');
     }
 
     /**
@@ -39,7 +39,13 @@ class TutorCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['id', 'user_id', 'district']);
+        CRUD::column('from_id');
+        CRUD::column('to_id');
+        CRUD::column('message');
+        CRUD::column('email');
+        CRUD::column('fullname');
+        CRUD::column('created_at');
+        CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -56,19 +62,13 @@ class TutorCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(TutorRequest::class);
-        $this->crud->addField([
-            'name' => 'user_id',
-            'label' => 'User Id <span class="text-danger">*</span>',
-            'type' => 'number'
+        CRUD::setValidation(MessageRequest::class);
 
-        ]);
-        $this->crud->addField([
-            'name' => 'district',
-            'label' => 'District <span class="text-danger">*</span>',
-            'type' => 'text'
-
-        ]);
+        CRUD::field('from_id');
+        CRUD::field('to_id');
+        CRUD::field('message');
+        CRUD::field('email');
+        CRUD::field('fullname');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

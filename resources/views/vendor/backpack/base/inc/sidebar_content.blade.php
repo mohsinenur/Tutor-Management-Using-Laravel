@@ -4,3 +4,4 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-question"></i> Users</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('tution') }}"><i class="nav-icon la la-question"></i> Tutions</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('tutor') }}"><i class="nav-icon la la-question"></i> Tutors</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('message') }}"><i class="nav-icon la la-question"></i> Messages</a></li>
