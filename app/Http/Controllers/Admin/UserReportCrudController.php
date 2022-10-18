@@ -2,39 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserReportRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class UserCrudController
+ * Class UserReportCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UserCrudController extends CrudController
+class UserReportCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-
-    private $genders = [
-        'Male' => 'Male',
-        'Female' => 'Female'
-    ];
-
-    private $statuses = [
-        'Available' => 'Available',
-        'Unavailable' => 'Unavailable'
-    ];
-
-    private $userTypes = [
-        'admin' => 'Admin',
-        'tutor' => 'Tutor',
-        'student' => 'Student',
-        'parent' => 'Parent'
-    ];
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -43,9 +26,9 @@ class UserCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\User::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-        CRUD::setEntityNameStrings('user', 'users');
+        CRUD::setModel(\App\Models\UserReport::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/user-report');
+        CRUD::setEntityNameStrings('user report', 'user reports');
     }
 
     /**
@@ -56,12 +39,11 @@ class UserCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('email');
-        CRUD::column('phone');
-        CRUD::column('gender')->type('radio')->options($this->genders);
-        CRUD::column('user_type')->type('radio')->options($this->userTypes);
-        CRUD::column('status')->type('radio')->options($this->statuses);
+        CRUD::column('user_id');
+        CRUD::column('report_by');
+        CRUD::column('reason');
+        CRUD::column('created_at');
+        CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -78,14 +60,11 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserRequest::class);
+        CRUD::setValidation(UserReportRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('email');
-        CRUD::field('phone');
-        CRUD::field('gender')->type('radio')->options($this->genders);
-        CRUD::field('user_type')->type('radio')->options($this->userTypes);
-        CRUD::field('status')->type('radio')->options($this->statuses);
+        CRUD::field('user_id');
+        CRUD::field('report_by');
+        CRUD::field('reason');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
