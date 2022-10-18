@@ -19,11 +19,68 @@ class TutionCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+    
+    private $district = [
+        'Dhaka' => 'Dhaka',
+        'Manikganj' => 'Manikganj',
+        'Tangail' => 'Tangail',
+    ];
+    private $area = [
+        'Gulshan' => 'Gulshan',
+        'Banani' => 'Banani',
+        'Badda' => 'Badda',
+        'Mirpur' => 'Mirpur',
+    ];
+    private $medium = [
+        'English' => 'English',
+        'Bangla' => 'Bangla',
+    ];
+    private $class = [
+        'One' => 'One',
+        'Two' => 'Two',
+        'Three' => 'Three',
+        'Four' => 'Four',
+        'Five' => 'Five',
+        'Six' => 'Six',
+        'Seven' => 'Seven',
+        'Eight' => 'Eight',
+        'Nine' => 'Nine',
+        'Ten' => 'Ten',
+    ];
+    private $subject = [
+        'English' => 'English',
+        'Bangla' => 'Bangla',
+        'Math' => 'Math',
+        'Chemistry' => 'Chemistry',
+        'Physics' => 'Physics',
+        'ICT' => 'ICT',
+    ];
+    private $days_per_week = [
+        '1' => 'One',
+        '2' => 'Two',
+        '3' => 'Three',
+        '4' => 'Four',
+        '5' => 'Five',
+        '6' => 'Six',
+        '7' => 'Seven',
+    ];
+    private $genders = [
+        'Male' => 'Male',
+        'Female' => 'Female',
+        'Any Gender' => 'Any Gender',
+    ];
+    private $status = [
+        'Available' => 'Available',
+        'Unavailable' => 'Unavailable'
+    ];
+
+    
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
      * @return void
      */
+     
     public function setup()
     {
         CRUD::setModel(\App\Models\Tution::class);
@@ -39,10 +96,24 @@ class TutionCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::column('id');
         CRUD::column('user_id');
-        CRUD::column('location');
+        CRUD::column('full_name');
+        CRUD::column('area');
+        CRUD::column('district');
+        CRUD::column('medium');
+        CRUD::column('class');
+        CRUD::column('student_school');
+        CRUD::column('subject');
+        CRUD::column('days_per_week');
+        CRUD::column('student_gender');
+        CRUD::column('address');
         CRUD::column('salary');
+        CRUD::column('mobile');
+        CRUD::column('email');
+        CRUD::column('information');
         CRUD::column('tutor_gender');
+        CRUD::column('status');
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
@@ -64,9 +135,23 @@ class TutionCrudController extends CrudController
         CRUD::setValidation(TutionRequest::class);
 
         CRUD::field('user_id');
-        CRUD::field('location');
+        CRUD::field('full_name');
+        CRUD::field('area')->type('select_from_array')->options($this->area);
+        CRUD::field('district')->type('select_from_array')->options($this->district);
+        CRUD::field('medium')->type('select_from_array')->options($this->medium);
+        CRUD::field('class')->type('select_from_array')->options($this->class);
+        CRUD::field('subject')->type('select_from_array')->options($this->subject);
+        CRUD::field('student_school');
+        CRUD::field('days_per_week')->type('select_from_array')->options($this->days_per_week);
+        CRUD::field('address');
         CRUD::field('salary');
-        CRUD::field('tutor_gender');
+        CRUD::field('student_gender')->type('radio')->options($this->genders);
+        CRUD::field('mobile');
+        CRUD::field('email');
+        CRUD::field('information');
+        CRUD::field('tutor_gender')->type('radio')->options($this->genders);
+        CRUD::field('status')->type('radio')->options($this->status);
+        CRUD::field('teaching_style');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
