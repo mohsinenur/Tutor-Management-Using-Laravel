@@ -59,9 +59,9 @@ class UserCrudController extends CrudController
         CRUD::column('name');
         CRUD::column('email');
         CRUD::column('phone');
-        CRUD::column('gender')->type('radio')->options($this->genders);
-        CRUD::column('user_type')->type('radio')->options($this->userTypes);
-        CRUD::column('status')->type('radio')->options($this->statuses);
+        CRUD::column('gender');
+        CRUD::column('user_type');
+        CRUD::column('status');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -84,8 +84,8 @@ class UserCrudController extends CrudController
         CRUD::field('email');
         CRUD::field('phone');
         CRUD::field('gender')->type('radio')->options($this->genders);
-        CRUD::field('user_type')->type('radio')->options($this->userTypes);
-        CRUD::field('status')->type('radio')->options($this->statuses);
+        CRUD::field('user_type')->type('select_from_array')->options($this->userTypes);
+        CRUD::field('status')->type('select_from_array')->options($this->statuses);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
