@@ -19,6 +19,51 @@ class TutorCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
+
+    private $district = [
+        'Dhaka' => 'Dhaka',
+        'Manikganj' => 'Manikganj',
+        'Tangail' => 'Tangail',
+    ];
+    private $area = [
+        'Gulshan' => 'Gulshan',
+        'Banani' => 'Banani',
+        'Badda' => 'Badda',
+        'Mirpur' => 'Mirpur',
+    ];
+    private $medium = [
+        'English' => 'English',
+        'Bangla' => 'Bangla',
+    ];
+    private $class = [
+        'One' => 'One',
+        'Two' => 'Two',
+        'Three' => 'Three',
+        'Four' => 'Four',
+        'Five' => 'Five',
+        'Six' => 'Six',
+        'Seven' => 'Seven',
+        'Eight' => 'Eight',
+        'Nine' => 'Nine',
+        'Ten' => 'Ten',
+    ];
+    private $subject = [
+        'English' => 'English',
+        'Bangla' => 'Bangla',
+        'Math' => 'Math',
+        'Chemistry' => 'Chemistry',
+        'ICT' => 'ICT',
+    ];
+    private $days_per_week = [
+        '1' => 'One',
+        '2' => 'Two',
+        '3' => 'Three',
+        '4' => 'Four',
+        '5' => 'Five',
+        '6' => 'Six',
+        '7' => 'Seven',
+    ];
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -39,7 +84,21 @@ class TutorCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->crud->setColumns(['id', 'user_id', 'district']);
+        CRUD::column('id');
+        CRUD::column('area');
+        CRUD::column('district');
+        CRUD::column('medium');
+        CRUD::column('class');
+        CRUD::column('subject');
+        CRUD::column('days_per_week');
+        CRUD::column('address');
+        CRUD::column('salary');
+        CRUD::column('information');
+        CRUD::column('user_id');
+        CRUD::column('qualification');
+        CRUD::column('teaching_style');
+        CRUD::column('created_at');
+        CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -56,19 +115,20 @@ class TutorCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(TutorRequest::class);
-        $this->crud->addField([
-            'name' => 'user_id',
-            'label' => 'User Id <span class="text-danger">*</span>',
-            'type' => 'number'
+        CRUD::setValidation(TutorRequest::class);
 
-        ]);
-        $this->crud->addField([
-            'name' => 'district',
-            'label' => 'District <span class="text-danger">*</span>',
-            'type' => 'text'
-
-        ]);
+        CRUD::field('user_id');
+        CRUD::field('area')->type('select_from_array')->options($this->area);
+        CRUD::field('disctrict')->type('select_from_array')->options($this->district);
+        CRUD::field('medium')->type('select_from_array')->options($this->medium);
+        CRUD::field('class')->type('select_from_array')->options($this->class);
+        CRUD::field('subject')->type('select_from_array')->options($this->subject);
+        CRUD::field('days_per_week')->type('select_from_array')->options($this->days_per_week);
+        CRUD::field('address');
+        CRUD::field('salary');
+        CRUD::field('information');
+        CRUD::field('qualification');
+        CRUD::field('teaching_style');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
