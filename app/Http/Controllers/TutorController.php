@@ -20,7 +20,6 @@ class TutorController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -107,8 +106,11 @@ class TutorController extends Controller
         $medium = $request->input('medium');
         $class = $request->input('class');
         $subject = $request->input('subject');
+        $gender = $request->input('gender');
 
-        $query = DB::table('tutors');
+        $query = DB::table('users')
+            ->select('users.*', 'tutors.*')
+            ->join('tutors', 'tutors.user_id', '=', 'users.id');
 
         if ($district)
             $query = $query->where('district', $district);
@@ -121,6 +123,12 @@ class TutorController extends Controller
 
         if ($class)
             $query = $query->where('class', $class);
+        
+        if ($gender)
+        $query = $query->where('gender', $gender);
+
+        if ($subject)
+        $query = $query->where('subject', $subject);
 
         $tutors = $query->get();
 
@@ -132,5 +140,4 @@ class TutorController extends Controller
     {
         return view('pages.request_tutor');
     }
-
 }

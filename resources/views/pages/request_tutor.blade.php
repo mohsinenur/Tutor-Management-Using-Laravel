@@ -35,7 +35,7 @@
                 <aside class="sidebar sidebar-offcanvas">
                     <!-- Widget Categories-->
                     <section class="widget widget-categories">
-                        <h3 class="widget-title">SEARCH TUTORS</h3>
+                        <h3 class="widget-title">REQUEST TUTORS</h3>
                         <p>আপনার গৃহশিক্ষক দরকার হলে নিচের ফরমটা পুরন করুন । গৃহশিক্ষকেরা আপনার ফোনে যোগাযোগ করবে। </p>
                         <form name="request-tutor-form" method="post" action="{{ url('tutions') }}">
                             @csrf
@@ -52,10 +52,9 @@
                                         <div class="col-9">
                                             <select name="district" class="form-control" id="select-input">
                                                 <option>Select District</option>
-                                                <option value="dhaka">Dhaka</option>
-                                                <option value="manikganj">Manikganj</option>
-                                                <option value="sylhet">Sylhet</option>
-                                                <option value="khulna">Khulna</option>
+                                                <option value="Dhaka">Dhaka</option>
+                                                <option value="Manikganj">Manikganj</option>
+                                                <option value="Tangail">Tangail</option>
                                             </select>
                                         </div>
                                     </div>
@@ -64,10 +63,10 @@
                                         <div class="col-9">
                                             <select name="area" class="form-control" id="select-input">
                                                 <option>Select Area</option>
-                                                <option value="gulshan">Gulshan</option>
-                                                <option value="banani">Banani</option>
-                                                <option value="badda">Badda</option>
-                                                <option value="mirpur">Mirpur</option>
+                                                <option value="Gulshan">Gulshan</option>
+                                                <option value="Banani">Banani</option>
+                                                <option value="Badda">Badda</option>
+                                                <option value="Mirpur">Mirpur</option>
                                             </select>
                                         </div>
                                     </div>
@@ -76,8 +75,8 @@
                                         <div class="col-9">
                                             <select name="medium" class="form-control" id="select-input">
                                                 <option>Select Medium</option>
-                                                <option value="english">English</option>
-                                                <option value="bangla">Bangla</option>
+                                                <option value="English">English</option>
+                                                <option value="Bangla">Bangla</option>
                                             </select>
                                         </div>
                                     </div>
@@ -86,16 +85,16 @@
                                         <div class="col-9">
                                             <select name="class" class="form-control" id="select-input">
                                                 <option>Select Class</option>
-                                                <option value="one">One</option>
-                                                <option value="two">Two</option>
-                                                <option value="three">Three</option>
-                                                <option value="four">Four</option>
-                                                <option value="five">Five</option>
-                                                <option value="six">Six</option>
-                                                <option value="seven">Seven</option>
-                                                <option value="eight">Eight</option>
-                                                <option value="nine">Nine</option>
-                                                <option value="ten">Ten</option>
+                                                <option value="One">One</option>
+                                                <option value="Two">Two</option>
+                                                <option value="Three">Three</option>
+                                                <option value="Four">Four</option>
+                                                <option value="Five">Five</option>
+                                                <option value="Six">Six</option>
+                                                <option value="Seven">Seven</option>
+                                                <option value="Eight">Eight</option>
+                                                <option value="Nine">Nine</option>
+                                                <option value="Ten">Ten</option>
                                             </select>
                                         </div>
                                     </div>
@@ -104,11 +103,11 @@
                                         <div class="col-9">
                                             <select name="subject" class="form-control" id="select-input">
                                                 <option> Select Subject</option>
-                                                <option value="bangla">Bangla</option>
-                                                <option value="english">English</option>
-                                                <option value="math">Math</option>
-                                                <option value="chamestry">Chamestry</option>
-                                                <option value="ICT">ict</option>
+                                                <option value="Bangla">Bangla</option>
+                                                <option value="English">English</option>
+                                                <option value="Math">Math</option>
+                                                <option value="Chamestry">Chamestry</option>
+                                                <option value="ICT">ICT</option>
                                             </select>
                                         </div>
                                     </div>
@@ -123,12 +122,12 @@
                                         <label class="col-3 col-form-label" for="select-input">Days per week:</label>
                                         <div class="col-9">
                                             <select class="form-control" id="select-input">
-                                                <option value="one">One</option>
-                                                <option value="two">Two</option>
-                                                <option value="three">Three</option>
-                                                <option value="four">Four</option>
-                                                <option value="five">Five</option>
-                                                <option value="six">Six</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                                <option value="6">Six</option>
                                             </select>
                                         </div>
                                     </div>
@@ -136,9 +135,9 @@
                                         <label class="col-3 col-form-label" for="select-input"> Gender of Student:</label>
                                         <div class="col-9">
                                             <select name="student_gender" class="form-control" id="select-input">
-                                                <option>Any Gender</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
+                                                <option value="Any Gender">Any Gender</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
                                             </select>
                                         </div>
                                     </div>
@@ -147,9 +146,9 @@
                                             Gender:</label>
                                         <div class="col-9">
                                             <select name="tutor_gender" class="form-control" id="select-input">
-                                                <option>Any Gender</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
+                                                <option value="Any Gender">Any Gender</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
                                             </select>
                                         </div>
                                     </div>

@@ -7,7 +7,7 @@
             <!-- Blog Posts-->
             <div class="col-xl-6 col-lg-6 order-lg-2">
                 <div class="widget-title">
-                    <div class="text-left">Available Tuitions (1)</div>
+                    <div class="text-left">Available Tuitions ({{ $count }})</div>
                 </div>
 
                 <div class="card mb-30">
@@ -51,15 +51,18 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="district" class="form-control">
                                         <option value="">All Districts</option>
-                                        <option value="dhaka">Dhaka</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Tangail">Tangail</option>
+                                        <option value="Manikganj">Manikganj</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <select name="area" class="form-control">
                                         <option value="">All Areas</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Gulshan">Gulshan</option>
+                                        <option value="Banani">Banani</option>
+                                        <option value="Badda">Badda</option>
+                                        <option value="Mirpur">Mirpur</option>
                                     </select>
                                 </div>
                             </div>
@@ -67,15 +70,23 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="medium" class="form-control">
                                         <option value="">Any Medium</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="English">English</option>
+                                        <option value="Bangla">Bangla</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <select name="class" class="form-control">
                                         <option value="">Any Class</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="One">One</option>
+                                        <option value="Two">Two</option>
+                                        <option value="Three">Three</option>
+                                        <option value="Four">Four</option>
+                                        <option value="Five">Five</option>
+                                        <option value="Six">Six</option>
+                                        <option value="Seven">Seven</option>
+                                        <option value="Eight">Eight</option>
+                                        <option value="Nine">Nine</option>
+                                        <option value="Ten">Ten</option>
                                     </select>
                                 </div>
                             </div>
@@ -83,8 +94,11 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="subject" class="form-control">
                                         <option value="">All Subjects</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Bangla">Bangla</option>
+                                        <option value="English">English</option>
+                                        <option value="Math">Math</option>
+                                        <option value="Chamestry">Chamestry</option>
+                                        <option value="ICT">ICT</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 form-group">
@@ -104,23 +118,22 @@
                 <section class="widget widget-categories">
                     <h3 class="widget-title">Featured Tutors</h3>
                     <div class="row">
-                        @foreach($tutors as $tutor)
-                        <div class="col-xl-4 col-lg-4 ">
-                            <div class="product-card product-list">
-                                <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
-                                    href="/tutor/{{ $tutor->id }}"><img src="{{ url('images/'.$tutor->image) }}" alt="Product"></a>
-                                <div class="product-info">
-                                    <h3 class="product-title"><a href="/tutor/{{ $tutor->id }}">{{ $tutor->name }}</a></h3>
-                                    <h4 class="product-price">{{ $tutor->salary }} tk/month</h4>
-                                    <p class="hidden-xs-down">{{ $tutor->district }}</p>
-                                    <p class="hidden-xs-down">{{ $tutor->phone }}</p>
-                                    <button class="btn btn-outline-primary btn-sm" data-toast="" data-toast-type="success"
-                                        data-toast-position="topRight" data-toast-icon="icon-circle-check"
-                                        data-toast-title="Product"
-                                        data-toast-message="successfuly added to cart!">Chat</button>
+                        @foreach ($tutors as $tutor)
+                            <div class="col-xl-4 col-lg-4 ">
+                                <div class="product-card product-list">
+                                    <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
+                                        href="/tutor/{{ $tutor->id }}"><img src="{{ url('images/' . $tutor->image) }}"
+                                            alt="Product"></a>
+                                    <div class="product-info">
+                                        <h3 class="product-title"><a
+                                                href="/tutor/{{ $tutor->id }}">{{ $tutor->name }}</a></h3>
+                                        <h4 class="product-price">{{ $tutor->salary }} tk/month</h4>
+                                        <p class="hidden-xs-down">{{ $tutor->district }}</p>
+                                        <p class="hidden-xs-down">{{ $tutor->phone }}</p>
+                                        <a href="/tutor/{{ $tutor->id }}" class="btn btn-outline-primary btn-sm">Message</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </section>

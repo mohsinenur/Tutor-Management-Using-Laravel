@@ -25,7 +25,7 @@
                             </tr>
                             <tr>
                                 <td>Location:</td>
-                                <td>{{ $tution->location }}, {{ $tution->address }} </td>
+                                <td>{{ $tution->address }} </td>
                             </tr>
                             <tr>
                                 <td>Days:</td>

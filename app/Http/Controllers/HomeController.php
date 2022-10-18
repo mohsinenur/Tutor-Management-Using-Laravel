@@ -19,14 +19,17 @@ class HomeController extends Controller
             ->select('users.*', 'tutors.*')
             ->join('tutors', 'tutors.user_id', '=', 'users.id')
             ->get();
-            return view('pages.home', compact('tutors'));
+            $count = count(DB::table('tutions')->get()->all());
+            return view('pages.home', compact('tutors', 'count'));
         }
         $tutors = DB::table('users')
             ->select('users.*', 'tutors.*')
             ->join('tutors', 'tutors.user_id', '=', 'users.id')
             ->get();
         // dd($tutors);
+        $count = count(DB::table('tutions')->get()->all());
+        // dd($tutions);
 
-        return view('pages.home', compact('tutors'));
+        return view('pages.home', compact('tutors', 'count'));
     }
 }

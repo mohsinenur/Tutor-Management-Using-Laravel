@@ -35,15 +35,18 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="district" class="form-control">
                                         <option value="">All Districts</option>
-                                        <option value="dhaka">Dhaka</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Tangail">Tangail</option>
+                                        <option value="Manikganj">Manikganj</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <select name="area" class="form-control">
                                         <option value="">All Areas</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Gulshan">Gulshan</option>
+                                        <option value="Banani">Banani</option>
+                                        <option value="Badda">Badda</option>
+                                        <option value="Mirpur">Mirpur</option>
                                     </select>
                                 </div>
                             </div>
@@ -51,15 +54,23 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="medium" class="form-control">
                                         <option value="">Any Medium</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="English">English</option>
+                                        <option value="Bangla">Bangla</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <select name="class" class="form-control">
                                         <option value="">Any Class</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="One">One</option>
+                                        <option value="Two">Two</option>
+                                        <option value="Three">Three</option>
+                                        <option value="Four">Four</option>
+                                        <option value="Five">Five</option>
+                                        <option value="Six">Six</option>
+                                        <option value="Seven">Seven</option>
+                                        <option value="Eight">Eight</option>
+                                        <option value="Nine">Nine</option>
+                                        <option value="Ten">Ten</option>
                                     </select>
                                 </div>
                             </div>
@@ -67,27 +78,22 @@
                                 <div class="col-sm-6 form-group">
                                     <select name="subject" class="form-control">
                                         <option value="">All Subjects</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Bangla">Bangla</option>
+                                        <option value="English">English</option>
+                                        <option value="Math">Math</option>
+                                        <option value="Chamestry">Chamestry</option>
+                                        <option value="ICT">ICT</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <select name="gender" class="form-control">
                                         <option value="">Any Gender</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                             </div>
-
                             <div class="row">
-                                <div class="col-sm-6 form-group">
-                                    <select name="salary_range" class="form-control">
-                                        <option value="">Salary Range</option>
-                                        <option value="Dallas">Dallas</option>
-                                        <option value="Houston">Houston</option>
-                                    </select>
-                                </div>
                                 <div class="col-sm-6 form-group">
                                     <button class="btn btn-primary" type="submit">Search Tutor</button>
                                 </div>

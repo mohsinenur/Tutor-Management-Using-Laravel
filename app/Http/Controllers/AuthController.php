@@ -66,7 +66,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
         }
 
-        return redirect("/")->withSuccess('Great! You have Successfully registered.');
+        return redirect("login")->withSuccess('Great! You have Successfully registered.');
     }
 
     public function updateUser(Request $request)

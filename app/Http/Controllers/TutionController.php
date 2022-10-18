@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tution;
 use App\Http\Requests\StoreTutionRequest;
 use App\Http\Requests\UpdateTutionRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TutionController extends Controller
@@ -46,7 +47,11 @@ class TutionController extends Controller
             'full_name' => 'required',
             'mobile' => 'required',
         ]);
-
+        // dd($request);
+        if (Auth::check()) {
+            $request['user_id'] = Auth::user()->id;
+        }
+        
         Tution::create($request->all());
         return redirect()->back()
             ->with('success', 'Turor request successfully.');
