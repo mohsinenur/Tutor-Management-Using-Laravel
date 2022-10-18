@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container padding-bottom-3x mb-2">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-help"></i>&nbsp;&nbsp;<strong>Success alert:</strong> {{ $message }}</div>
+    @endif
     <div class="row">
         <div class="col-lg-4">
             <aside class="user-info-wrapper">
@@ -73,6 +76,57 @@
                 </tbody>
             </table>
             @endif
+
+            @if( Auth::user()->user_type == 'student' or Auth::user()->user_type == 'parent')
+            <h6 class="text-muted text-normal">
+                Your Tutions:
+            </h6>
+            <hr class="margin-bottom-1x">
+            @foreach($tutions as $tution)
+            <div class="col-lg-12 order-lg-2">
+
+                <div class="card mb-30">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Tuition ID #</td>
+                                    <td>{{ $tution->id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Class/ Subject:</td>
+                                    <td>Class {{ $tution->class }} , {{ $tution->subject }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Location:</td>
+                                    <td>{{ $tution->address }} </td>
+                                </tr>
+                                <tr>
+                                    <td>Days:</td>
+                                    <td>{{ $tution->days_per_week }} days/week</td>
+                                </tr>
+                                <tr>
+                                    <td>Salary Range:</td>
+                                    <td>{{ $tution->salary }}(+/-) tk/month</td>
+                                </tr>
+                                <tr>
+                                    <td>Status:</td>
+                                    <td>{{ $tution->status }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @if($tution->status == 'Unavailable')
+                        <div style="float: right;"> <a href="/tution-available/{{ $tution->id }}" class="btn btn-sm btn-outline-primary m-0">Make Available</a></div>
+                        @endif
+                        @if($tution->status == 'Available')
+                        <div style="float: right;"> <a href="/tution-unavailable/{{ $tution->id }}" class="btn btn-sm btn-outline-warning m-0">Make Unavailable</a></div>
+                        @endif
+                        <div> Posted on: {{ $tution->created_at }} </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
         </div>
     </div>
 </div>
@@ -101,9 +155,9 @@
                                             @if($tutor->district != '')
                                             <option selected value="{{ $tutor->district }}">{{ $tutor->district }} - Selected</option>
                                             @endif
-                                            <option value="dhaka">Dhaka</option>
-                                            <option value="manikganj">Manikganj</option>
-                                            <option value="tangail">Tangail</option>
+                                            <option value="Dhaka">Dhaka</option>
+                                            <option value="Manikganj">Manikganj</option>
+                                            <option value="Tangail">Tangail</option>
                                         </select>
                                     </div>
                                 </div>
@@ -115,10 +169,10 @@
                                             @if($tutor->area != '')
                                             <option selected value="{{ $tutor->area }}">{{ $tutor->area }} - Selected</option>
                                             @endif
-                                            <option value="gulshan">Gulshan</option>
-                                            <option value="banani">Banani</option>
-                                            <option value="badda">Badda</option>
-                                            <option value="mirpur">Mirpur</option>
+                                            <option value="Gulshan">Gulshan</option>
+                                            <option value="Banani">Banani</option>
+                                            <option value="Badda">Badda</option>
+                                            <option value="Mirpur">Mirpur</option>
                                         </select>
                                     </div>
                                 </div>
@@ -146,16 +200,16 @@
                                             @if($tutor->class != '')
                                             <option selected value="{{ $tutor->class }}">{{ $tutor->class }} - Selected</option>
                                             @endif
-                                            <option value="one">One</option>
-                                            <option value="two">Two</option>
-                                            <option value="three">Three</option>
-                                            <option value="four">Four</option>
-                                            <option value="five">Five</option>
-                                            <option value="six">Six</option>
-                                            <option value="seven">Seven</option>
-                                            <option value="eight">Eight</option>
-                                            <option value="nine">Nine</option>
-                                            <option value="ten">Ten</option>
+                                            <option value="One">One</option>
+                                            <option value="Two">Two</option>
+                                            <option value="Three">Three</option>
+                                            <option value="Four">Four</option>
+                                            <option value="Five">Five</option>
+                                            <option value="Six">Six</option>
+                                            <option value="Seven">Seven</option>
+                                            <option value="Eight">Eight</option>
+                                            <option value="Nine">Nine</option>
+                                            <option value="Ten">Ten</option>
                                         </select>
                                     </div>
                                 </div>
@@ -170,10 +224,10 @@
                                             @if($tutor->subject != '')
                                             <option selected value="{{ $tutor->subject }}">{{ $tutor->subject }} - Selected</option>
                                             @endif
-                                            <option value="bangla">Bangla</option>
-                                            <option value="english">English</option>
-                                            <option value="math">Math</option>
-                                            <option value="chamestry">Chamestry</option>
+                                            <option value="Bangla">Bangla</option>
+                                            <option value="English">English</option>
+                                            <option value="Math">Math</option>
+                                            <option value="Chamestry">Chamestry</option>
                                             <option value="ICT">ict</option>
                                         </select>
                                     </div>
@@ -192,7 +246,6 @@
                                             <option value="4">Four</option>
                                             <option value="5">Five</option>
                                             <option value="6">Six</option>
-                                            <option value="7">Seven</option>
                                         </select>
                                     </div>
                                 </div>
@@ -202,13 +255,13 @@
                                 <div class="form-group col-sm-6">
                                     <label class="col-form-label" for="text-input">Preferable Tution Style:</label>
                                     <div>
-                                        <input name="teaching_style" class="form-control" type="text" id="text-input" value="{{ $tutor->teaching_style }}">
+                                        <input name="teaching_style" class="form-control" type="text" value="{{ $tutor->teaching_style }}">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label class="col-form-label" for="text-input">Monthly Salary:</label>
                                     <div>
-                                        <input name="salary" class="form-control" type="number" id="text-input" value="{{ $tutor->salary }}">
+                                        <input name="salary" class="form-control" type="number" value="{{ $tutor->salary }}">
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +319,7 @@
                             <div class="form-group row">
                                 <label class="col-3 col-form-label" for="text-input">Full Name</label>
                                 <div class="col-9">
-                                    <input name="name" id="name" class="form-control" type="text" value="{{ $user['name']}}">
+                                    <input name="name" id="name" class="form-control" type="text" value="{{ $user['name']}}" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -278,7 +331,7 @@
                             <div class="form-group row">
                                 <label class="col-3 col-form-label" for="text-input">Email</label>
                                 <div class="col-9">
-                                    <input name="email" class="form-control" type="text" id="text-input" value="{{ $user['email']}}">
+                                    <input name="email" class="form-control" type="text" value="{{ $user['email']}}" required>
                                 </div>
                             </div>
                             <div class="form-group row">

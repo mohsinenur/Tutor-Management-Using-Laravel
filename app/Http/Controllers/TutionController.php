@@ -18,11 +18,29 @@ class TutionController extends Controller
     public function index()
     {
         $tutions = DB::table('tutions')
-        ->select('*')
-        ->where('status', 'available')->get();
-        ;
+            ->select('*')
+            ->where('status', 'available')->get()->sortByDesc('created_at');
         // dd($tutions);
         return view('pages.tution', compact('tutions'));
+    }
+
+    public function makeAvailable($id)
+    {
+        // dd('test');
+        DB::table('tutions')
+            ->where('id', $id)
+            ->update(['status'=> 'Available']);
+        
+        return redirect()->back()->withSuccess('Tution set Available success!');
+    }
+
+    public function makeUnavailable($id)
+    {
+        DB::table('tutions')
+            ->where('id', $id)
+            ->update(['status'=> 'Unavailable']);
+        
+        return redirect()->back()->withSuccess('Tution set Unavailable success!');
     }
 
     /**
@@ -51,7 +69,7 @@ class TutionController extends Controller
         if (Auth::check()) {
             $request['user_id'] = Auth::user()->id;
         }
-        
+
         Tution::create($request->all());
         return redirect()->back()
             ->with('success', 'Turor request successfully.');

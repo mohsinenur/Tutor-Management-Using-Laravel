@@ -44,14 +44,14 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Full Name</label>
                                         <div class="col-9">
-                                            <input name="full_name" class="form-control" type="text">
+                                            <input name="full_name" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select District: </label>
                                         <div class="col-9">
-                                            <select name="district" class="form-control" id="select-input">
-                                                <option>Select District</option>
+                                            <select name="district" class="form-control" required>
+                                                <option value="" selected disabled>Select District</option>
                                                 <option value="Dhaka">Dhaka</option>
                                                 <option value="Manikganj">Manikganj</option>
                                                 <option value="Tangail">Tangail</option>
@@ -61,8 +61,8 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select Area:</label>
                                         <div class="col-9">
-                                            <select name="area" class="form-control" id="select-input">
-                                                <option>Select Area</option>
+                                            <select name="area" class="form-control" required>
+                                                <option value="" selected disabled>Select Area</option>
                                                 <option value="Gulshan">Gulshan</option>
                                                 <option value="Banani">Banani</option>
                                                 <option value="Badda">Badda</option>
@@ -73,8 +73,8 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select Medium:</label>
                                         <div class="col-9">
-                                            <select name="medium" class="form-control" id="select-input">
-                                                <option>Select Medium</option>
+                                            <select name="medium" class="form-control">
+                                                <option value="" selected disabled>Select Medium</option>
                                                 <option value="English">English</option>
                                                 <option value="Bangla">Bangla</option>
                                             </select>
@@ -83,8 +83,8 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Select Class:</label>
                                         <div class="col-9">
-                                            <select name="class" class="form-control" id="select-input">
-                                                <option>Select Class</option>
+                                            <select name="class" class="form-control" required>
+                                                <option value="" selected disabled>Select Class</option>
                                                 <option value="One">One</option>
                                                 <option value="Two">Two</option>
                                                 <option value="Three">Three</option>
@@ -101,12 +101,12 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input"> Select Subject:</label>
                                         <div class="col-9">
-                                            <select name="subject" class="form-control" id="select-input">
-                                                <option> Select Subject</option>
+                                            <select name="subject" class="form-control" required>
+                                                <option value="" selected disabled> Select Subject</option>
                                                 <option value="Bangla">Bangla</option>
                                                 <option value="English">English</option>
                                                 <option value="Math">Math</option>
-                                                <option value="Chamestry">Chamestry</option>
+                                                <option value="Chemistry">Chemistry</option>
                                                 <option value="ICT">ICT</option>
                                             </select>
                                         </div>
@@ -121,7 +121,8 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input">Days per week:</label>
                                         <div class="col-9">
-                                            <select class="form-control" id="select-input">
+                                            <select name="days_per_week" class="form-control">
+                                                <option value="" selected disabled>Select</option>
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
@@ -134,8 +135,8 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="select-input"> Gender of Student:</label>
                                         <div class="col-9">
-                                            <select name="student_gender" class="form-control" id="select-input">
-                                                <option value="Any Gender">Any Gender</option>
+                                            <select name="student_gender" class="form-control" required>
+                                                <option value="" selected disabled>Select Gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                             </select>
@@ -145,7 +146,7 @@
                                         <label class="col-3 col-form-label" for="select-input">Desired Tutor
                                             Gender:</label>
                                         <div class="col-9">
-                                            <select name="tutor_gender" class="form-control" id="select-input">
+                                            <select name="tutor_gender" class="form-control">
                                                 <option value="Any Gender">Any Gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
@@ -155,7 +156,7 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Monthly Salary</label>
                                         <div class="col-9">
-                                            <input name="salary" class="form-control" type="text" id="text-input">
+                                            <input name="salary" class="form-control" type="number">
                                         </div>
                                     </div>
 
@@ -168,13 +169,13 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Mobile</label>
                                         <div class="col-9">
-                                            <input name="mobile" class="form-control" type="text" id="text-input">
+                                            <input name="mobile" class="form-control" type="number" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Email</label>
                                         <div class="col-9">
-                                            <input name="email" class="form-control" type="text" id="text-input">
+                                            <input name="email" class="form-control" type="email">
                                         </div>
                                     </div>
 

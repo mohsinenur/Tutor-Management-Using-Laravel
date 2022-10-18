@@ -53,7 +53,7 @@ class MessageController extends Controller
         }
         // dd($data);
         Message::create($data);
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Message sent!');
     }
 
     public function adminMessage(Request $request)
@@ -64,7 +64,7 @@ class MessageController extends Controller
         }
         // dd($data);
         AdminContact::create($data);
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Thanks. We got your message. It will be checked ASAP.');
     }
 
     public function userReport(Request $request)
@@ -75,7 +75,7 @@ class MessageController extends Controller
         }
         // dd($data);
         UserReport::create($data);
-        return redirect()->back();
+        return redirect()->back()->withSuccess('User report success!');
     }
 
     /**

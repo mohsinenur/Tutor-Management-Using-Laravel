@@ -30,13 +30,12 @@ CREATE TABLE `admin_contacts` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `phone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `admin_contacts` */
 
 insert  into `admin_contacts`(`id`,`from_id`,`message`,`email`,`fullname`,`created_at`,`updated_at`,`phone`) values 
-(1,11,'details','email@gmail.com','name','2022-10-17 16:54:49','2022-10-17 16:54:49','01677531881'),
-(2,11,'details','velaf92226@imdutex.com','Client3','2022-10-17 16:56:27','2022-10-17 16:56:27','01686161175');
+(4,14,'Hi admin..','student@gmail.com','Student','2022-10-18 12:29:04','2022-10-18 13:21:43','01700000001');
 
 /*Table structure for table `failed_jobs` */
 
@@ -74,16 +73,12 @@ CREATE TABLE `messages` (
   PRIMARY KEY (`id`),
   KEY `to_id` (`to_id`),
   CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`to_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `messages` */
 
 insert  into `messages`(`id`,`from_id`,`to_id`,`message`,`email`,`fullname`,`created_at`,`updated_at`,`status`,`phone`) values 
-(1,8,11,'Are you available?','khalid@gmail.com','Khalid Hassan','2022-10-17 08:45:30','2022-10-17 08:45:33','read',NULL),
-(2,8,11,'hello','khalid@gmail.com','Khalid Hassan','2022-10-17 08:46:12','2022-10-17 08:46:14','unread',NULL),
-(3,11,8,'Yes, I am available.','tutor@gmail.com','Tutor','2022-10-17 08:50:43','2022-10-17 18:50:46','read',NULL),
-(4,11,12,'details','mukulseu@gmail.com','name','2022-10-17 16:34:47','2022-10-17 16:34:47','read','01757069807'),
-(6,11,8,'hello student','nafish@gmail.com','Name','2022-10-17 17:54:59','2022-10-17 17:54:59','unread','01686161175');
+(7,14,13,'Hi are you available for tuition??','student@gmail.com','Student','2022-10-18 12:27:05','2022-10-18 13:21:56','unread','01700000001');
 
 /*Table structure for table `migrations` */
 
@@ -153,9 +148,9 @@ CREATE TABLE `tutions` (
   `class` varchar(255) DEFAULT NULL,
   `subject` varchar(255) DEFAULT NULL,
   `student_school` varchar(255) DEFAULT NULL,
-  `days_per_week` tinyint(4) DEFAULT NULL,
+  `days_per_week` int(11) DEFAULT NULL,
   `student_gender` varchar(20) DEFAULT NULL,
-  `address` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `location` varchar(225) DEFAULT NULL,
   `salary` varchar(255) DEFAULT NULL,
   `mobile` varchar(50) DEFAULT NULL,
@@ -166,16 +161,14 @@ CREATE TABLE `tutions` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tutions` */
 
 insert  into `tutions`(`id`,`user_id`,`full_name`,`district`,`area`,`medium`,`class`,`subject`,`student_school`,`days_per_week`,`student_gender`,`address`,`location`,`salary`,`mobile`,`email`,`information`,`tutor_gender`,`status`,`created_at`,`updated_at`) values 
-(1,8,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',3,'Male','12/1, Gulshan',NULL,'4000','017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:51:15','2022-10-13 00:51:15'),
-(2,8,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',4,'Male','12/1, Gulshan',NULL,'5000','017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:52:56','2022-10-13 00:52:56'),
-(3,NULL,'Akram Khan','dhaka','gulshan','english','ten','math','Motijheel Govt School',5,'Male','12/1, Gulshan',NULL,'6000','017864521','akram@gmail.com','You have to be very good at math. DU, Buet students are preferable.','Male','Available','2022-10-13 00:55:24','2022-10-13 00:55:24'),
-(4,8,'Saif Ali','dhaka','banani','bangla','nine','physics','Uttara HIgh School',2,'Any Gender',NULL,NULL,'4000','0178788778',NULL,NULL,'Any Gender','Available','2022-10-13 01:06:14','2022-10-13 01:06:14'),
-(5,NULL,'Shakil Hossain','dhaka','banani','bangla','eight','physics','Banani High School',5,'Any Gender',NULL,NULL,'5000','017864521',NULL,NULL,'Any Gender','Available','2022-10-13 01:07:40','2022-10-13 01:07:40');
+(6,14,'Student','Dhaka','Banani','English','Ten','English','Banani Biddyaniketon',3,'Male','address',NULL,'5000','01700000001','student@gmail.com','informations','Male','Unavailable','2022-10-18 12:31:13','2022-10-18 12:50:39'),
+(7,14,'Student','Dhaka','Mirpur','Bangla','Nine','Chemistry','Mirpur Model School',4,'Female','address',NULL,'7000','01700000001','student@gmail.com','informations','Any Gender','Available','2022-10-18 12:34:03','2022-10-18 12:46:11'),
+(8,14,'Student','Tangail','Gulshan','English','Nine','Math','school',6,'Female','address',NULL,'8000','01700000001','email@gmail.com',NULL,'Any Gender','Available','2022-10-18 12:49:48','2022-10-18 13:13:13');
 
 /*Table structure for table `tutors` */
 
@@ -200,13 +193,12 @@ CREATE TABLE `tutors` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `tutors_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tutors` */
 
 insert  into `tutors`(`id`,`district`,`area`,`medium`,`class`,`subject`,`days_per_week`,`salary`,`address`,`information`,`user_id`,`qualification`,`teaching_style`,`created_at`,`updated_at`) values 
-(3,'dhaka','gulshan','English','seven','english',5,6000,'Nikunja-2, Dhaka',NULL,11,'BSC. in CSE','Private','2022-10-15 05:18:14','2022-10-17 18:09:07'),
-(4,'manikganj','mirpur','English','eight','english',3,7000,'Nowapara, Jessore',NULL,12,NULL,NULL,'2022-10-15 14:26:36','2022-10-15 14:28:06');
+(5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,13,NULL,NULL,'2022-10-18 11:43:13','2022-10-18 12:10:14');
 
 /*Table structure for table `user_reports` */
 
@@ -220,30 +212,12 @@ CREATE TABLE `user_reports` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `user_reports` */
 
 insert  into `user_reports`(`id`,`user_id`,`report_by`,`reason`,`created_at`,`updated_at`) values 
-(1,12,11,'reasons','2022-10-17 17:32:05','2022-10-17 17:32:05');
-
-/*Table structure for table `user_types` */
-
-DROP TABLE IF EXISTS `user_types`;
-
-CREATE TABLE `user_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `user_types` */
-
-insert  into `user_types`(`id`,`type`) values 
-(1,'admin'),
-(2,'student'),
-(3,'parent'),
-(4,'tutor');
+(2,13,14,'Testing.','2022-10-18 12:27:27','2022-10-18 13:21:26');
 
 /*Table structure for table `users` */
 
@@ -263,18 +237,20 @@ CREATE TABLE `users` (
   `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT 'Available',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `account_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Enabled',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`phone`,`gender`,`remember_token`,`user_type`,`image`,`status`,`created_at`,`updated_at`) values 
-(1,'Admin','admin@admin.com',NULL,'$2y$10$YHsvHUQLyMIuMimuej8XZeGOtnVpXV9/RiU81M9PdZQCk0VckRQAm',NULL,NULL,NULL,'admin','profile.png','Available','2022-09-28 14:50:25','2022-09-28 14:50:25'),
-(6,'Nur Mohsin','mohsin@gmail.com',NULL,'$2y$10$xR2CUgSj8/vxxqUrzlmwgOg4hFdAFzKVIYZySRm3H519bTz7nxz1y',NULL,NULL,NULL,'parent','profile.png','Available','2022-10-14 13:27:30','2022-10-14 13:27:30'),
-(8,'Khalid Hassan','khalid@gmail.com',NULL,'$2y$10$uEroShNjS00kZJyjPdctDOf0.AyiNTYo2.8T76A9NNjjdlAv2twia','01757069806','Male',NULL,'student','1665838361.png','Available','2022-10-14 13:36:16','2022-10-15 12:52:41'),
-(11,'Tutor','tutor@gmail.com',NULL,'$2y$10$AOuYQz74NNRndkFcRxOsaOgQyT7YXHeJsnWrqjW4rN9CZRTCGKE6e','01677531881','Male',NULL,'tutor','1665838130.png','Unavaliable','2022-10-15 05:18:13','2022-10-17 01:37:43'),
-(12,'Nafish Sadik','nafish@gmail.com',NULL,'$2y$10$9g8hIX5U6HaOZiMgA7pg2OHybvs4oYRiFDfAeGqSDiupWHvWLTTbO','01837527151','Male',NULL,'tutor','profile.png','Available','2022-10-15 14:26:36','2022-10-15 14:27:12');
+insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`phone`,`gender`,`remember_token`,`user_type`,`image`,`status`,`created_at`,`updated_at`,`account_status`) values 
+(1,'Admin','admin@gmail.com',NULL,'$2y$10$9g8hIX5U6HaOZiMgA7pg2OHybvs4oYRiFDfAeGqSDiupWHvWLTTbO','01700000001','Male',NULL,'admin','profile.png','Available','2022-10-15 14:26:36','2022-10-15 14:27:12','Enabled'),
+(13,'Tutor','tutor@gmail.com',NULL,'$2y$10$ns5WQ3NOj7IoJYvSCW.oJeSKbUF.5gIn99EdkF.5tWY.KVIBImTh.','','',NULL,'tutor','profile.png','Available','2022-10-18 11:43:12','2022-10-18 11:43:12','Enabled'),
+(14,'Student','student@gmail.com',NULL,'$2y$10$7KwPe0CLyIPw0M0CDbuFZe/Igy08.r48q7gULUBy62vJmUnb0uf3i','01700000001','',NULL,'student','profile.png','Available','2022-10-18 11:45:45','2022-10-18 17:13:11','Enabled'),
+(15,'Parent','parent@gmail.com',NULL,'$2y$10$AZPzb7D9H82llYoxCAHa7eVI6q3W3iSkTGmwIh566ay2.gbOYWhiu','','',NULL,'parent','profile.png','Available','2022-10-18 11:47:42','2022-10-18 11:47:42','Enabled'),
+(16,'Test Name','test@gmail.com',NULL,'$2y$10$BFDUKcWIJSBFQB1KbFchy.R1cDuiPOoHcegDopI9PDIV8KDntq2Me','','',NULL,'student','profile.png','Available','2022-10-18 11:51:36','2022-10-18 11:51:36','Enabled'),
+(19,'Nur Mohsin','velaf92226@imdutex.com',NULL,'123456','','',NULL,'student','profile.png','Available','2022-10-18 13:19:33','2022-10-18 13:19:33','Enabled');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

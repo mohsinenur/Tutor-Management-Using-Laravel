@@ -19,7 +19,7 @@ class HomeController extends Controller
             ->select('users.*', 'tutors.*')
             ->join('tutors', 'tutors.user_id', '=', 'users.id')
             ->get();
-            $count = count(DB::table('tutions')->get()->all());
+            $count = count(DB::table('tutions')->where('status', 'available')->get()->all());
             return view('pages.home', compact('tutors', 'count'));
         }
         $tutors = DB::table('users')

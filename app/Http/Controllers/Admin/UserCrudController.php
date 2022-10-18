@@ -36,6 +36,11 @@ class UserCrudController extends CrudController
         'parent' => 'Parent'
     ];
 
+    private $account_status = [
+        'Enabled' => 'Enabled',
+        'Disabled' => 'Disabled'
+    ];
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -62,6 +67,7 @@ class UserCrudController extends CrudController
         CRUD::column('gender');
         CRUD::column('user_type');
         CRUD::column('status');
+        CRUD::column('account_status');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -78,14 +84,21 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserRequest::class);
+        // CRUD::setValidation(UserRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('email');
-        CRUD::field('phone');
-        CRUD::field('gender')->type('radio')->options($this->genders);
-        CRUD::field('user_type')->type('select_from_array')->options($this->userTypes);
-        CRUD::field('status')->type('select_from_array')->options($this->statuses);
+        // CRUD::field('name');
+        // CRUD::field('email');
+        // CRUD::field('phone');
+        // CRUD::field('password');
+        // CRUD::field('gender')->type('radio')->options($this->genders);
+        // CRUD::field('user_type')->type('select_from_array')->options($this->userTypes);
+        // CRUD::field('status')->type('select_from_array')->options($this->statuses);
+        // CRUD::field('account_status')->type('radio')->options($this->account_status);
+
+        $this->crud->setValidation(UserRequest::class);
+
+        // TODO: remove setFromDb() and manually define Fields
+        $this->crud->setFromDb();
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

@@ -27,10 +27,10 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/')
-                ->withSuccess('Signed in');
+                ->withSuccess('Login in success.');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->withErrors('Login details are not valid');
     }
 
     public function registerView()
@@ -66,7 +66,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
         }
 
-        return redirect("login")->withSuccess('Great! You have Successfully registered.');
+        return redirect("my-profile")->withSuccess('Great! You have Successfully registered.');
     }
 
     public function updateUser(Request $request)
@@ -76,9 +76,9 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email,' . Auth::user()->id,
             'password' => 'nullable|min:6',
-            'phone' => 'required',
-            'gender' => 'required',
-            'status' => 'required',
+            'phone' => 'nullable',
+            'gender' => 'nullable',
+            'status' => 'nullable',
         ]);
         
         $data = request()->except(['_token']);
@@ -96,10 +96,8 @@ class AuthController extends Controller
             // dd($data['image']);
             User::where('id', Auth::user()->id)->update($data);
         }
-        else{
-
-            User::where('id', Auth::user()->id)->update($data);
-        }
+        
+        User::where('id', Auth::user()->id)->update($data);
 
         return redirect("my-profile")->withSuccess('Profile updated!');
     }
@@ -131,8 +129,11 @@ class AuthController extends Controller
             }
             $id = Auth::user()->id;
             $user = Auth::user();
+            $tutions = DB::table('tutions')
+            ->select('*')
+            ->where('user_id', Auth::user()->id)->get()->sortByDesc('created_at');
 
-            return view('pages.tutor.profile', compact('id', 'user', 'unread_count'));
+            return view('pages.tutor.profile', compact('id', 'user', 'unread_count', 'tutions'));
         }
         return redirect('login')->with('Error', 'Please log in first!');
     }

@@ -31,6 +31,8 @@ Route::get('/request-tutor', [TutorController::class, 'requestTutor']);
 Route::get('/my-profile', [AuthController::class, 'myProfile']);
 Route::get('/message', [MessageController::class, 'index']);
 Route::resource('tutions', TutionController::class);
+Route::get('tution-available/{id}', [TutionController::class, 'makeAvailable'])->name('makeAvailable');
+Route::get('tution-unavailable/{id}', [TutionController::class, 'makeUnavailable'])->name('makeUnavailable');
 
 Route::get('login', [AuthController::class, 'loginView'])->name('login');
 Route::get('register', [AuthController::class, 'registerView'])->name('register');

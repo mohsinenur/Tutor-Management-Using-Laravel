@@ -55,6 +55,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal">Close</button>
+                                                    <a href="user/{{ $message->from_id }}" class="btn btn-primary btn-sm" type="submit">Reply</a>
                                                     @if($message->status == 'unread')
                                                     <button class="btn btn-primary btn-sm" type="submit">Mark as read</button>
                                                     @endif

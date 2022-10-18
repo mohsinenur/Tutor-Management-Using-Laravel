@@ -151,7 +151,8 @@ class TutionCrudController extends CrudController
         CRUD::field('information');
         CRUD::field('tutor_gender')->type('radio')->options($this->genders);
         CRUD::field('status')->type('radio')->options($this->status);
-        CRUD::field('teaching_style');
+
+        // $this->crud->setFromDb();
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
