@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tution;
 use App\Http\Requests\StoreTutionRequest;
 use App\Http\Requests\UpdateTutionRequest;
+use Illuminate\Support\Facades\DB;
 
 class TutionController extends Controller
 {
@@ -15,7 +16,12 @@ class TutionController extends Controller
      */
     public function index()
     {
-        return view('pages.tution');
+        $tutions = DB::table('tutions')
+        ->select('*')
+        ->where('status', 'available')->get();
+        ;
+        // dd($tutions);
+        return view('pages.tution', compact('tutions'));
     }
 
     /**

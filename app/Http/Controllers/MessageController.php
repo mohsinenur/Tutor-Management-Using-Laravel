@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminContact;
 use App\Models\Message;
+use App\Models\UserReport;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -15,7 +18,25 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('pages.tutor.message');
+        $messages = DB::table('messages')->where('to_id', Auth::user()->id)->get()->sortByDesc('created_at');
+        // dd($messages);
+        $unread_count = (DB::table('messages')
+        ->where('to_id', Auth::user()->id)
+        ->where('status', 'unread'))->count();
+        // dd($unread_count);
+        return view('pages.tutor.message', compact('messages', 'unread_count'));
+    }
+
+    public function markRead($id)
+    {
+        DB::table('messages')->where('id', $id)->update(['status'=> 'read']);
+        return redirect()->back();
+    }
+
+    public function delete_message($id)
+    {
+        DB::table('messages')->where('id', $id)->delete();
+        return redirect()->back();
     }
 
     /**
@@ -23,9 +44,38 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
+        $data = request()->except(['_token']);
+        if (Auth::check()) {
+            $data['from_id'] = Auth::user()->id;
+        }
+        // dd($data);
+        Message::create($data);
+        return redirect()->back();
+    }
+
+    public function adminMessage(Request $request)
+    {
+        $data = request()->except(['_token']);
+        if (Auth::check()) {
+            $data['from_id'] = Auth::user()->id;
+        }
+        // dd($data);
+        AdminContact::create($data);
+        return redirect()->back();
+    }
+
+    public function userReport(Request $request)
+    {
+        $data = request()->except(['_token']);
+        if (Auth::check()) {
+            $data['report_by'] = Auth::user()->id;
+        }
+        // dd($data);
+        UserReport::create($data);
+        return redirect()->back();
     }
 
     /**

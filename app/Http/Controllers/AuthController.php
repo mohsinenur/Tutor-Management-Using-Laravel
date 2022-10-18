@@ -78,6 +78,7 @@ class AuthController extends Controller
             'password' => 'nullable|min:6',
             'phone' => 'required',
             'gender' => 'required',
+            'status' => 'required',
         ]);
         
         $data = request()->except(['_token']);
@@ -115,6 +116,9 @@ class AuthController extends Controller
     public function myProfile()
     {
         if (Auth::check()) {
+            $unread_count = (DB::table('messages')
+            ->where('to_id', Auth::user()->id)
+            ->where('status', 'unread'))->count();
 
             if (Auth::user()->user_type == 'tutor') {
                 $query = DB::table('tutors');
@@ -123,12 +127,12 @@ class AuthController extends Controller
                 $id = $tutor->id;
                 $user = Auth::user();
 
-                return view('pages.tutor.profile', compact('id', 'tutor', 'user'));
+                return view('pages.tutor.profile', compact('id', 'tutor', 'user', 'unread_count'));
             }
             $id = Auth::user()->id;
             $user = Auth::user();
 
-            return view('pages.tutor.profile', compact('id', 'user'));
+            return view('pages.tutor.profile', compact('id', 'user', 'unread_count'));
         }
         return redirect('login')->with('Error', 'Please log in first!');
     }
@@ -141,5 +145,12 @@ class AuthController extends Controller
         Tutor::where('user_id', Auth::user()->id)->update($data);
 
         return redirect("my-profile")->withSuccess('Profile updated!');
+    }
+
+    public function userProfile($id)
+    {
+        $user = DB::table(('users'))->where('id', $id)->first();
+        // dd($user);
+        return view('pages.user_profile', compact('user'));
     }
 }

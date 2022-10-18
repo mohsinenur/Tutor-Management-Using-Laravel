@@ -7,8 +7,7 @@
         <div class="col-lg-4">
             <aside class="user-info-wrapper">
                 <div class="user-cover" style="background-image: url('assets/img/account/user-cover-img.jpg');">
-                    <div class="info-label" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward Points to spend"><i class="icon-medal"></i>290
-                        points</div>
+                    <div class="info-label" data-toggle="tooltip" title="" data-original-title="User is {{Auth::user()->status}}"><i class="icon-medal"></i>{{Auth::user()->status}}</div>
                 </div>
                 <div class="user-info">
                     <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src="{{ url('images/'.$user->image) }}" alt="User"></div>
@@ -17,7 +16,7 @@
                     </div>
                 </div>
             </aside>
-            <nav class="list-group"><a class="list-group-item with-badge" href="/message"><i class="icon-bag"></i>Message<span class="badge badge-primary badge-pill">6</span></a><a class="list-group-item active" href="/my-profile"><i class="icon-head"></i>Profile</a><a class="list-group-item" href="account-address.html"><i class="icon-map"></i>Addresses</a></nav>
+            <nav class="list-group"><a class="list-group-item with-badge" href="/message"><i class="icon-bag"></i>Message<span class="badge badge-primary badge-pill">{{ $unread_count }}</span></a><a class="list-group-item active" href="/my-profile"><i class="icon-head"></i>Profile</a></nav>
         </div>
         <div class="col-lg-8">
             <div class="product-info">
@@ -32,14 +31,10 @@
                 </h4>
                 @if( Auth::user()->user_type == 'tutor')
                 <p>
-                    <strong>Experience:</strong> Interested in learning myself and teaching others.
+                    <strong>Qualification:</strong> {{Auth::user()->qualification}}
                 </p>
                 <p>
-                    <strong>Qualification:</strong> B.Sc. in EEE
-                </p>
-                <p>
-                    <strong>Area Covered: {{ $tutor->area }}</strong> ( BADDA , CHAKBAZAR , DHANMONDI , GULSHAN ,
-                    KALLYANPUR, KHILGAON , LALBAGH , MOTIJHEEL , PALTAN , RAMPURA , SHAHBAG , TEJGAON )
+                    <strong>Area Covered: {{ $tutor->area }}</strong>
                 </p>
                 <p>
                     <strong>Teaching:</strong> {{ $tutor->subject }}
@@ -66,7 +61,7 @@
                     </tr>
                     <tr>
                         <td>Current Status for Tuition:</td>
-                        <td>Available</td>
+                        <td>{{ Auth::user()->status }}</td>
                     </tr>
                     <tr>
                         <td>Days per week:</td>
@@ -74,12 +69,7 @@
                     </tr>
                     <tr>
                         <td>Preffered Tutoring Style:</td>
-                        <td>Group Tuition, Private Tuition </td>
-                    </tr>
-                    <tr>
-                        <td>Salary Range:</td>
-                        <td>5500-6500 tk/month</td>
-                    </tr>
+                        <td>{{ $tutor->teaching_style }}
                 </tbody>
             </table>
             @endif
@@ -207,15 +197,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-3 col-form-label" for="text-input">Monthly Salary</label>
-                                <div class="col-9">
-                                    <input name="salary" class="form-control" type="number" id="text-input" value="{{ $tutor->salary }}">
+
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="col-form-label" for="text-input">Preferable Tution Style:</label>
+                                    <div>
+                                        <input name="teaching_style" class="form-control" type="text" id="text-input" value="{{ $tutor->teaching_style }}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-form-label" for="text-input">Monthly Salary:</label>
+                                    <div>
+                                        <input name="salary" class="form-control" type="number" id="text-input" value="{{ $tutor->salary }}">
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-3 col-form-label" for="textarea-input">Details Address</label>
+                                <label class="col-3 col-form-label" for="textarea-input">Qualifications:</label>
+                                <div class="col-9">
+                                    <input type="text" name="qualification" class="form-control" value="{{ $tutor->qualification }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label" for="textarea-input">Details Address:</label>
                                 <div class="col-9">
                                     <textarea name="address" class="form-control" id="textarea-input" rows="3">{{ $tutor->address }}</textarea>
                                 </div>
@@ -223,7 +229,7 @@
 
                             <div class="form-group row">
                                 <label class="col-3 col-form-label" for="textarea-input">Additional
-                                    Information</label>
+                                    Information:</label>
                                 <div class="col-9">
                                     <textarea name="information" class="form-control" id="textarea-input" rows="3">{{ $tutor->information }}</textarea>
                                 </div>
@@ -292,6 +298,28 @@
                                         <option selected disabled value="">Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-3 col-form-label" for="select-input">
+                                    Visibility:</label>
+                                <div class="col-9">
+                                    <select name="status" class="form-control" id="select-input">
+                                        @if ($user['status'] == 'Available')
+                                        <option disabled value="">Select one</option>
+                                        <option selected value="{{ $user['status']}}">{{ $user['status']}}</option>
+                                        <option value="Unavaliable">Unavaliable</option>
+                                        @elseif ($user['status'] == 'Unavaliable')
+                                        <option disabled value="">Select one</option>
+                                        <option value="Available">Available</option>
+                                        <option selected value="{{ $user['status']}}">{{ $user['status']}}</option>
+                                        @else
+                                        <option selected disabled value="">Select one</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Unavaliable">Unavaliable</option>
                                         @endif
                                     </select>
                                 </div>

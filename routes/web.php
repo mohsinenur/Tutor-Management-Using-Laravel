@@ -40,3 +40,9 @@ Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 
 Route::post('update-user', [AuthController::class, 'updateUser'])->name('updateUser');
 Route::post('update-tutor', [AuthController::class, 'updateTutor'])->name('updatTutor');
+Route::get('user/{id}', [AuthController::class, 'userProfile'])->name('userProfile');
+Route::post('message/{id}', [MessageController::class, 'markRead'])->name('markAsRead');
+Route::get('delete-message/{id}', [MessageController::class, 'delete_message'])->name('deleteMessage');
+Route::post('create-message', [MessageController::class, 'create'])->name('createMessage');
+Route::post('admin-message', [MessageController::class, 'adminMessage'])->name('adminMessage');
+Route::post('user-report', [MessageController::class, 'userReport'])->name('userReport');
