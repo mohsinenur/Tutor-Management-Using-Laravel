@@ -108,7 +108,7 @@
                                 <div class="col-xl-12 col-lg-12 ">
                                     <div class="product-card product-list">
                                         <a style="position: relative; width: 120px; padding: 18px; border-right: 1px solid #e1e7ec; display: table-cell; vertical-align: middle;"
-                                            href="/tutor/1"><img src="{{ url('images/'.$tutor->image) }}"
+                                            href="/tutor/{{ $tutor->id }}"><img src="{{ url('images/'.$tutor->image) }}"
                                                 alt="Product"></a>
                                         <div class="product-info">
                                             <h3 class="product-title"><a>{{ $tutor->name }}</a>

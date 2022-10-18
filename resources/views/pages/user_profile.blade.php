@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container padding-bottom-2x mb-2">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show text-center margin-bottom-1x"><span class="alert-close" data-dismiss="alert"></span><i class="icon-help"></i>&nbsp;&nbsp;<strong>Success alert:</strong> {{ $message }}</div>
+    @endif
     <div class="row">
         <div class="col-lg-8 col-md-8 order-md-1">
             <h6 class="text-muted text-normal text-uppercase">
