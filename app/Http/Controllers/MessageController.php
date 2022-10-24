@@ -21,15 +21,15 @@ class MessageController extends Controller
         $messages = DB::table('messages')->where('to_id', Auth::user()->id)->get()->sortByDesc('created_at');
         // dd($messages);
         $unread_count = (DB::table('messages')
-        ->where('to_id', Auth::user()->id)
-        ->where('status', 'unread'))->count();
+            ->where('to_id', Auth::user()->id)
+            ->where('status', 'unread'))->count();
         // dd($unread_count);
         return view('pages.tutor.message', compact('messages', 'unread_count'));
     }
 
     public function markRead($id)
     {
-        DB::table('messages')->where('id', $id)->update(['status'=> 'read']);
+        DB::table('messages')->where('id', $id)->update(['status' => 'read']);
         return redirect()->back();
     }
 
@@ -46,7 +46,12 @@ class MessageController extends Controller
      */
     public function create(Request $request)
     {
-        
+        $request->validate([
+            'fullname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|numeric'
+        ]);
+
         $data = request()->except(['_token']);
         if (Auth::check()) {
             $data['from_id'] = Auth::user()->id;
@@ -58,6 +63,12 @@ class MessageController extends Controller
 
     public function adminMessage(Request $request)
     {
+        $request->validate([
+            'fullname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|numeric'
+        ]);
+
         $data = request()->except(['_token']);
         if (Auth::check()) {
             $data['from_id'] = Auth::user()->id;

@@ -3,8 +3,17 @@
 @section('content')
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success alert-dismissible fade show text-center margin-bottom-1x">
             <p>{{ $message }}</p>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show text-center margin-bottom-1x">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 

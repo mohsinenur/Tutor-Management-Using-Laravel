@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Tutor;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,59 @@ class AuthController extends Controller
     public function registerView()
     {
         return view('pages.register');
+    }
+
+    public function forgotPassword()
+    {
+        return view('pages.forgot_password');
+    }
+
+    public function postForgotPassword(Request $request)
+    {
+
+        $request->validate([
+            'email' => 'required|email|exists:users,email'
+        ]);
+
+        $otp = rand(10000, 99999);
+
+        $data['otp'] = $otp;
+
+        // Mail::raw('Here is your OTP: ' . str($otp), function ($request, $message) {
+        //     $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+        //     $message->to($request->email);
+        // });
+
+        User::where('email', $request->email)->update($data);
+
+        return redirect()->intended('/reset-password')
+            ->withSuccess('OTP has been send to your email');
+    }
+
+    public function resetPassword()
+    {
+        return view('pages.reset_password');
+    }
+
+    public function postResetPassword(Request $request)
+    {
+
+        $request->validate([
+            'otp' => 'required|numeric',
+            'password' => 'required|min:3',
+            'password_confirmation' => 'same:password',
+        ]);
+
+        $data['password'] = Hash::make($request['password']);
+
+        $reset = User::where('otp', $request->otp)->update($data);
+
+        if ($reset) {
+            return redirect()->intended('/')
+                ->withSuccess('Password update successful');
+        }
+
+        return redirect("reset-password")->withErrors('Invalid OTP');
     }
 
     public function postRegistration(Request $request)
@@ -80,7 +134,7 @@ class AuthController extends Controller
             'gender' => 'nullable',
             'status' => 'nullable',
         ]);
-        
+
         $data = request()->except(['_token']);
         if ($data['password']) {
             $data['password'] = Hash::make($data['password']);
@@ -88,15 +142,15 @@ class AuthController extends Controller
             unset($data['password']);
         }
 
-        if($request->file('image')){
-            $imageName = time().'.'.$request->image->extension();
+        if ($request->file('image')) {
+            $imageName = time() . '.' . $request->image->extension();
             // Public Folder
             $request->image->move(public_path('images'), $imageName);
-            $data['image']= $imageName;
+            $data['image'] = $imageName;
             // dd($data['image']);
             User::where('id', Auth::user()->id)->update($data);
         }
-        
+
         User::where('id', Auth::user()->id)->update($data);
 
         return redirect("my-profile")->withSuccess('Profile updated!');
@@ -115,8 +169,8 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             $unread_count = (DB::table('messages')
-            ->where('to_id', Auth::user()->id)
-            ->where('status', 'unread'))->count();
+                ->where('to_id', Auth::user()->id)
+                ->where('status', 'unread'))->count();
 
             if (Auth::user()->user_type == 'tutor') {
                 $query = DB::table('tutors');
@@ -130,8 +184,8 @@ class AuthController extends Controller
             $id = Auth::user()->id;
             $user = Auth::user();
             $tutions = DB::table('tutions')
-            ->select('*')
-            ->where('user_id', Auth::user()->id)->get()->sortByDesc('created_at');
+                ->select('*')
+                ->where('user_id', Auth::user()->id)->get()->sortByDesc('created_at');
 
             return view('pages.tutor.profile', compact('id', 'user', 'unread_count', 'tutions'));
         }
@@ -142,7 +196,7 @@ class AuthController extends Controller
     {
         $data = request()->except(['_token']);
         // dd($data);
-        
+
         Tutor::where('user_id', Auth::user()->id)->update($data);
 
         return redirect("my-profile")->withSuccess('Profile updated!');

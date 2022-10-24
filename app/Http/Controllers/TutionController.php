@@ -29,8 +29,8 @@ class TutionController extends Controller
         // dd('test');
         DB::table('tutions')
             ->where('id', $id)
-            ->update(['status'=> 'Available']);
-        
+            ->update(['status' => 'Available']);
+
         return redirect()->back()->withSuccess('Tution set Available success!');
     }
 
@@ -38,8 +38,8 @@ class TutionController extends Controller
     {
         DB::table('tutions')
             ->where('id', $id)
-            ->update(['status'=> 'Unavailable']);
-        
+            ->update(['status' => 'Unavailable']);
+
         return redirect()->back()->withSuccess('Tution set Unavailable success!');
     }
 
@@ -63,7 +63,8 @@ class TutionController extends Controller
     {
         $request->validate([
             'full_name' => 'required',
-            'mobile' => 'required',
+            'mobile' => 'required|numeric',
+            'email' => 'required|email',
         ]);
         // dd($request);
         if (Auth::check()) {
