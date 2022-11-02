@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label for="validationCustom02">Mobile</label>
-                    <input class="form-control" type="text" id="validationCustom02" required="" name="phone">
+                    <input class="form-control" type="number" id="validationCustom02" required="" name="phone">
                 </div>
                 <div class="form-group">
                     <label for="validationCustom03">Email</label>
-                    <input class="form-control" type="text" id="validationCustom03" required="" name="email">
+                    <input class="form-control" type="email" id="validationCustom03" required="" name="email">
                 </div>
                 <div class="form-group">
                     <label for="textarea-input">Details</label>

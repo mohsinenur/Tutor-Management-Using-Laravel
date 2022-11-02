@@ -128,9 +128,9 @@ class AuthController extends Controller
         // dd($request->all());
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users,email,' . Auth::user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
             'password' => 'nullable|min:6',
-            'phone' => 'nullable',
+            'phone' => 'nullable|numeric',
             'gender' => 'nullable',
             'status' => 'nullable',
         ]);
