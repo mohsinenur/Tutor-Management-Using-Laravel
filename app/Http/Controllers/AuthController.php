@@ -53,6 +53,8 @@ class AuthController extends Controller
 
         $otp = rand(10000, 99999);
 
+        $otp = 12345;
+
         $data['otp'] = $otp;
 
         // Mail::raw('Here is your OTP: ' . str($otp), function ($request, $message) {
