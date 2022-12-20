@@ -27,6 +27,7 @@
                 <table class="table table-hover margin-bottom-none">
                     <thead>
                         <tr>
+                            <th>From</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>DateTime</th>
@@ -36,6 +37,7 @@
                     <tbody>
                         @foreach($messages as $message)
                         <tr>
+                            <td>{{ $message->user_type }}</td>
                             <td class="product-title"><a style="text-decoration: none;" href="user/{{ $message->from_id }}">{{ $message->fullname }}</a>
                             </td>
                             <td>{{ $message->email }}</td>
