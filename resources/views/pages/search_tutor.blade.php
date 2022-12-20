@@ -95,6 +95,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 form-group">
+                                    <select name="range" class="form-control">
+                                        <option value="">Any Range</option>
+                                        <option value="3000">3000</option>
+                                        <option value="5000">5000</option>
+                                        <option value="7000">7000</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 form-group">
                                     <button class="btn btn-primary" type="submit">Search Tutor</button>
                                 </div>
                             </div>

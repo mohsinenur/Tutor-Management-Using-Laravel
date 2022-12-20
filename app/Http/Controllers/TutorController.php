@@ -107,6 +107,7 @@ class TutorController extends Controller
         $class = $request->input('class');
         $subject = $request->input('subject');
         $gender = $request->input('gender');
+        $range = $request->input('range');
 
         $query = DB::table('users')
             ->select('users.*', 'tutors.*')
@@ -129,6 +130,9 @@ class TutorController extends Controller
 
         if ($subject)
         $query = $query->where('subject', $subject);
+
+        if ($range)
+        $query = $query->where('salary', '<=', $range);
 
         $tutors = $query->get();
 
