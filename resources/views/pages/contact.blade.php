@@ -24,15 +24,27 @@
                 @csrf
                 <div class="form-group">
                     <label for="validationCustom01">Full name</label>
-                    <input class="form-control" type="text" id="validationCustom01" required="" name="fullname">
+                    @if (Auth::user())
+                    <input class="form-control" type="text" required name="fullname" value="{{Auth::user()->name}}">
+                    @else
+                    <input class="form-control" type="text" required name="fullname">
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="validationCustom02">Mobile</label>
-                    <input class="form-control" type="number" id="validationCustom02" required="" name="phone">
+                    @if (Auth::user())
+                    <input class="form-control" type="text" required name="phone" value="{{Auth::user()->phone}}">
+                    @else
+                    <input class="form-control" type="text" minlength="11" maxlength="11" required name="phone">
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="validationCustom03">Email</label>
-                    <input class="form-control" type="email" id="validationCustom03" required="" name="email">
+                    @if (Auth::user())
+                    <input class="form-control" type="text" required name="email" value="{{Auth::user()->email}}">
+                    @else
+                    <input class="form-control" type="text" required name="email">
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="textarea-input">Details</label>
