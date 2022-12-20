@@ -354,8 +354,7 @@
                                 <div class="form-group row">
                                     <label class="col-3 col-form-label" for="text-input">Phone No</label>
                                     <div class="col-9">
-                                        <input name="phone" id="phone" class="form-control" type="number"
-                                            value="{{ $user['phone'] }}">
+                                        <input name="phone" id="phone" class="form-control" type="text" minlength="11" maxlength="11" value="{{ $user['phone'] }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">

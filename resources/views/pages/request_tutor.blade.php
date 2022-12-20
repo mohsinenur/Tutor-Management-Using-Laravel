@@ -178,7 +178,7 @@
                                     <div class="form-group row">
                                         <label class="col-3 col-form-label" for="text-input">Mobile</label>
                                         <div class="col-9">
-                                            <input name="mobile" class="form-control" type="number" required>
+                                            <input name="mobile" class="form-control" type="text" minlength="11" maxlength="11" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">

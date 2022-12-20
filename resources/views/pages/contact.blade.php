@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="validationCustom02">Mobile</label>
                     @if (Auth::user())
-                    <input class="form-control" type="text" required name="phone" value="{{Auth::user()->phone}}">
+                    <input class="form-control" type="text" minlength="11" maxlength="11" required name="phone" value="{{Auth::user()->phone}}">
                     @else
                     <input class="form-control" type="text" minlength="11" maxlength="11" required name="phone">
                     @endif
