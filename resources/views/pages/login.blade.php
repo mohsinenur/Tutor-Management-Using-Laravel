@@ -16,16 +16,6 @@
                 <h3 class="margin-bottom-1x">Have Account? Login</h3>
                 <form class="login-box" method="post" action="{{ route('login.post') }}">
                     @csrf
-                    <h4 class="margin-bottom-1x">Login with social accounts</h4>
-                    <div class="row margin-bottom-1x">
-                        <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block facebook-btn"
-                                href="#"><i class="socicon-facebook"></i>&nbsp;Facebook login</a></div>
-                        <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block twitter-btn"
-                                href="#"><i class="socicon-twitter"></i>&nbsp;Twitter login</a></div>
-                        <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block google-btn" href="#"><i
-                                    class="socicon-googleplus"></i>&nbsp;Google+ login</a></div>
-                    </div>
-                    <h4 class="margin-bottom-1x">Or using form below</h4>
                     <div class="form-group input-group">
                         <input class="form-control" name="email" id="email" type="email" placeholder="Email"
                             required autofocus><span class="input-group-addon"><i class="icon-mail"></i></span>
